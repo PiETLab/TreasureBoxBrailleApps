@@ -26,19 +26,22 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import commands.PlayerCommand;
 import commands.QuestionCommand;
-import commands.SoundCommand;
 import org.apache.commons.io.FilenameUtils;
 
 
 public class QuestionWindow extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public JFrame frame= new JFrame("Enter New Question");
 	private JComboBox<String> buttons = new JComboBox<String>();
 	private JTextArea introField = new JTextArea(5,18);
@@ -83,6 +86,8 @@ public class QuestionWindow extends JFrame{
 	/**
 	 * Create the application.
 	 * This constructor is used for NewQuestionListener
+	 * @param gui
+	 *            the gui object to be used
 	 */
 	public QuestionWindow(GUI gui){
 		this.gui= gui;
@@ -94,6 +99,8 @@ public class QuestionWindow extends JFrame{
 	/**
 	 * Create the application.
 	 * This constructor is used for Edit Question
+	 * @param a
+	 *          the question command to be evaluated
 	 */
 	public QuestionWindow(QuestionCommand a){
 		this.introField.setText(a.getIntroField());
@@ -158,7 +165,6 @@ public class QuestionWindow extends JFrame{
 	
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws InterruptedException 
 	 */
 	public void initialize()  {
 
@@ -173,7 +179,7 @@ public class QuestionWindow extends JFrame{
 		
 		
 		// confirmation dialog when frame is closed
-	frame.setDefaultCloseOperation(frame.DO_NOTHING_ON_CLOSE);
+	frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 	frame.addWindowListener(new WindowAdapter() {
 	    @Override
 	    public void windowClosing(WindowEvent we)
@@ -182,7 +188,7 @@ public class QuestionWindow extends JFrame{
 	        int PromptResult = JOptionPane.showOptionDialog(null,"Do you want to add this question in scenario?","Confirmation",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
 	        if(PromptResult==JOptionPane.YES_OPTION)
 	        {
-	        	frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+	        	frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	        	//frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSED));
 	        }
 	        else

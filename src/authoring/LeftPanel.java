@@ -145,9 +145,6 @@ public void addItem(PlayerCommand newElement) {
 
 /**
  * Edit an element from the list 
- *
-* @param a
- *            Parameter to edit
  */
 public void EditItem() {
 	
@@ -204,7 +201,7 @@ public void moveDown() {
  */
 public void deleteItem() {
 	// Get the index of the selected element
-	int[] selectedIndex = commandList.getSelectedIndices();
+	//int[] selectedIndex = commandList.getSelectedIndices();
 	
 	
 	// Remove that position from the listModel

@@ -1,0 +1,7 @@
+Sep 20, 2018 2:17:30 PM enamel.ScenarioParser errorLog
+WARNING: Exception error: java.util.NoSuchElementException: No line found
+Sep 20, 2018 2:17:30 PM enamel.ScenarioParser errorLog
+INFO: Expected format: Cell num1 
+ Button num2 
+ as the first two lines of the scenarion file, and where num1 and num2 are positive integers. 
+Did not receive such a format in the scenario file and program had to end due to the incorrectfile format.

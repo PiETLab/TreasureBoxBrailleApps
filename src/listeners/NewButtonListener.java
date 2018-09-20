@@ -3,7 +3,6 @@ package listeners;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -12,8 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.logging.Level;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -202,7 +199,7 @@ public class NewButtonListener implements ActionListener {
 		gbc_lblAdvanceOptions.gridy = 3;
 		frame.getContentPane().add(lblAdvanceOptions, gbc_lblAdvanceOptions);
 		
-		JComboBox comboBox = new JComboBox<Object>(array);
+		JComboBox<Object> comboBox = new JComboBox<Object>(array);
 		comboBox.setSelectedIndex(0);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;

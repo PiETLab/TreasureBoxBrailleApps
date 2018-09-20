@@ -1,7 +1,6 @@
 package commands;
 
 import javax.swing.JOptionPane;
-import authoring.GUI;
 /**
  * A class to represent pause commands. Contains a string for the pause duration
  *
@@ -11,10 +10,7 @@ import authoring.GUI;
  */
 public class PauseCommand implements PlayerCommand {
 
-	private static final String String = null;
 	private String waitTime;
-	private GUI gui = new GUI();
-
 	/***
 	 * Constructor for PauseCommand.
 	 *

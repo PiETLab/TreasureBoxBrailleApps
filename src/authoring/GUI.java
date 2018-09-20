@@ -4,7 +4,6 @@ package authoring;
 import javax.swing.Action;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
@@ -19,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -35,8 +33,6 @@ import java.awt.event.ActionEvent;
 import java.awt.KeyEventDispatcher;
 import javax.swing.SwingUtilities;
 
-import commands.PauseCommand;
-import enamel.ScenarioParser;
 import listeners.NewButtonListener;
 
 

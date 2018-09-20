@@ -1,11 +1,4 @@
 package listeners;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -15,18 +8,7 @@ import java.util.Random;
 import java.util.logging.Level;
 
 import javax.accessibility.Accessible;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 
 import authoring.ColourMapper;
 import authoring.GUI;
@@ -56,8 +38,6 @@ import commands.QuestionCommand;
 public class NewQuestionListener extends JPanel implements ActionListener, Accessible{
 	private static final long serialVersionUID = 7443038348707836054L;
 	private GUI gui;
-	private int numOfButtons;
-	private ColourMapper mapper;
 	public static Thread threadObject;
 	private QuestionWindow ques;
 
@@ -73,8 +53,6 @@ public class NewQuestionListener extends JPanel implements ActionListener, Acces
  */
 public NewQuestionListener(GUI gui, ColourMapper mapper) {
 	this.gui = gui;
-	this.mapper = mapper;
-
 	this.getAccessibleContext().setAccessibleDescription("");}
 
 
@@ -89,10 +67,6 @@ public void actionPerformed(ActionEvent arg0) {
 	//This section of code will execute when Jframe window will be closed in QuestionWindow
 	ques.frame.addWindowListener(new WindowAdapter()
     {
-		
-		private String introText="none";
-		private String incorrectText="none";
-		private String correctText="none";
         @Override
         public void windowClosed(WindowEvent e)
         {

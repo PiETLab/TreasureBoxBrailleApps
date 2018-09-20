@@ -74,7 +74,8 @@ public class VisualPlayer extends Player {
 				
 				// Close Simulator and stop the audio.
 				frame.addWindowListener(new java.awt.event.WindowAdapter() {
-				    @Override
+				    @SuppressWarnings("deprecation")
+					@Override
 				    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 				    	TestListener.playerThread.stop(); //???????
 				            frame.dispose();

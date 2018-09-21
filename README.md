@@ -2,7 +2,7 @@
 
 This repository is dedicated to both **Authoring App** and **SCALP App**.
 
-  * **Authoring App**: This is a GUI application that enables the creation of `Scenario` files.
+  * **Authoring App**: This is a GUI application that enables the creation of `Scenario` files. 
     * Scenarios are text files that together with some associated audio files will be executed by the Raspberry Pi 2.
     * This app responsibility is to output a formatted text file and associated it with the correct audio files.
 

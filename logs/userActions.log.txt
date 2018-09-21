@@ -1,3 +1,0 @@
-[09-20-2018 14:53:13.464] [listeners.NewScenarioListener] User has clicked New Scenario Button. 
-[09-20-2018 14:53:20.233] [listeners.NewButtonListener] User has clicked New Item button. 
-[09-20-2018 14:53:27.993] [listeners.TestListener] User has clicked Test Scenario button. 

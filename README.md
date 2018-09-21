@@ -37,7 +37,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 
   * Right click on the project folder, and select `Import`
     * ![import_libs](./READMEImages/import_libs.png)
-  * Select `Project folder or achieve`
+  * Select `Projects from Folder or Achieve`
     * ![import_libs2](./READMEImages/import_libs2.png)
   * Import the `lib` folder
     * ![import_libs3](./READMEImages/import_libs3.png)

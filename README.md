@@ -16,7 +16,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 
 
 2. Import the project using Eclipse
-  * ![first_step](./READMEImages/firststep.png)
+  * ![first_step](./READMEImages/first_step.png)
   * ![second_step](./READMEImages/second_step.png)
   * ![third_step](./READMEImages/third_step.png)
 

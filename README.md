@@ -1,12 +1,13 @@
 # Treasure Box Braille Apps
 
-This repository is dedicated to both Authoring App and SCALP App.
+This repository is dedicated to both **Authoring App** and **SCALP App**.
 
   * **Authoring App**: This is a GUI application that enables the creation of `Scenario` files.
     * Scenarios are text files that together with some associated audio files will be executed by the Raspberry Pi 2.
     * This app responsibility is to output a formatted text file and associated it with the correct audio files.
 
   * **SCALP**: This app is responsible for running the `Scenario` files inside the Raspberry Pi 2.
+    * `SCALP` means Select-(as per)-Config-and-Launch-Player
     * `SCALP` also contains a separate repository called [`SCALP Scripts`](https://github.com/PiETLab/SCALPScripts) which are a series of `bash script` files that automatically feed the `Scenario` files into the `SCALP App`
 
 ## How to run both apps in development mode

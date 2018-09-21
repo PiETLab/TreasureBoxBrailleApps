@@ -61,7 +61,7 @@ import com.sun.speech.freetts.VoiceManager;
 public class SCALP {
     //FreeTTS voices
     VoiceManager vm = VoiceManager.getInstance();
-    Voice voice = vm.getVoice ("kevin16"); 
+    Voice voice = vm.getVoice("kevin16"); 
     
     JFrame frame;   
     

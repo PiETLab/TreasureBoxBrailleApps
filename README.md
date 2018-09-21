@@ -1,15 +1,73 @@
-# Authoring App
+# Authoring App and SCALP App
 
 ## How to run in development mode
 
 1. Download [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-developers)
-2. Import project using Eclipse
+
+
+2. Import the project using Eclipse
   * ![first_step](./READMEImages/first_step.png)
   * ![second_step](./READMEImages/second_step.png)
-3. In order to run the app, open `src/common` and execute the `EntryPoint.java` file
+
+
+3. Install JDK 8 in order to run the project code properly
+  * [Click here to install](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+  * After installing go to `Eclipse -> Preferences -> Java -> Installer JREs`
+  * Click `Add` and select `Standard VM`
+    * ![add_java_8_support](./READMEImages/java_8_support.png)
+    * ![add_java_8_support2](./READMEImages/java_8_support2.png)
+    * The path for MacOSX should be something like:  `/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home`
+  * Finally click `Finish`
+  * Make JRE 8 as the default option
+    * ![add_java_8_support3](./READMEImages/java_8_support3.png)
+
+
+4. Import all necessary libraries to the project
+  * Right click on the project folder, and select `Import`
+    * ![import_libs](./READMEImages/import_libs.png)
+  * Select `Project folder or achieve`
+    * ![import_libs2](./READMEImages/import_libs2.png)
+  * Import the `lib` folder
+    * ![import_libs3](./READMEImages/import_libs3.png)
+
+
+5. In order to run the Authoring App, open `src/common` and execute the `EntryPoint.java` file
   * ![third_step](./READMEImages/third_step.png)
 
-## Documentation
+
+6. In order to run the SCALP App, open `src/enamel` and execute the `SCALP.java` file
+  * ![third_step2](./READMEImages/third_step2.png)
+
+## How make an Authoring App JAR
+
+1. To build the Authoring App jar right click on the project folder and select the `Export` folder
+  * ![export_jar](./READMEImages/export_jar.png)
+
+
+2. Select the `Runnable JAR` option
+  * ![export_jar2](./READMEImages/export_jar2.png)
+
+
+3. Select the `EntryPoint - AuthoringApp` option from the drop down, mark the `Package required libraries into generate JAR` option and click `Finish`
+  * ![export_jar3](./READMEImages/export_jar3.png)
+
+## How make an SCALP JAR
+
+1. To build the Authoring App jar right click on the project folder and select the `Export` folder
+  * ![export_jar](./READMEImages/export_jar.png)
+
+
+2. Select the `Runnable JAR` option
+  * ![export_jar2](./READMEImages/export_jar2.png)
+
+
+3. Select the `SCALP - AuthoringApp` option from the drop down, mark the `Package required libraries into generate JAR` option and click `Finish`
+  * ![export_jar3](./READMEImages/export_jar3.png)
+
+## API Documentation
 
 * For further API documentation about every single package and class, visit the `doc` folder and open the `index.html` file.
   ![documentation](./READMEImages/documentation.png)
+
+* To generate a more recent API documentation click on `Project -> Generate Javadoc`
+  * ![generate_docs](./READMEImages/generate_docs.png)

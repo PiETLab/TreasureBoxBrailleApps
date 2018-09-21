@@ -15,7 +15,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 1. Download [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-developers)
 
 
-2. Import the project using Eclipse
+2. Import the project using Eclipse 
   * ![first_step](./READMEImages/first_step.png)
   * ![second_step](./READMEImages/second_step.png)
   * ![third_step](./READMEImages/third_step.png)

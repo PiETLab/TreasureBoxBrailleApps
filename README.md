@@ -18,6 +18,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 2. Import the project using Eclipse
   * ![first_step](./READMEImages/first_step.png)
   * ![second_step](./READMEImages/second_step.png)
+  * ![third_step](./READMEImages/third_step.png)
 
 
 3. Install JDK 8 in order to run the project code properly
@@ -42,11 +43,11 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 
 
 5. In order to run the Authoring App, open `src/common` and execute the `EntryPoint.java` file
-  * ![third_step](./READMEImages/third_step.png)
+  * ![last_step](./READMEImages/last_step.png)
 
 
 6. In order to run the SCALP App, open `src/enamel` and execute the `SCALP.java` file
-  * ![third_step2](./READMEImages/third_step2.png)
+  * ![last_step2](./READMEImages/last_step2.png)
 
 ## How make an Authoring App JAR
 

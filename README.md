@@ -15,7 +15,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 1. Download [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/packages/release/2018-09/r/eclipse-ide-java-developers)
 
 
-2. Import the project using Eclipse 
+2. Import the project using Eclipse
   * ![first_step](./READMEImages/first_step.png)
   * ![second_step](./READMEImages/second_step.png)
   * ![third_step](./READMEImages/third_step.png)
@@ -29,11 +29,12 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
     * ![add_java_8_support2](./READMEImages/java_8_support2.png)
     * The path for MacOSX should be something like:  `/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home`
   * Finally click `Finish`
-  * Make JRE 8 as the default option
+  * Make JRE 8 as your default option
     * ![add_java_8_support3](./READMEImages/java_8_support3.png)
 
 
 4. Import all necessary libraries to the project
+
   * Right click on the project folder, and select `Import`
     * ![import_libs](./READMEImages/import_libs.png)
   * Select `Project folder or achieve`

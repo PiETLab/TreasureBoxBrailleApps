@@ -1,8 +1,8 @@
-# Treasure Box Braille Apps 
+# Treasure Box Braille Apps
 
 This repository is dedicated to both **Authoring App** and **SCALP App**.
 
-  * **Authoring App**: This is a GUI application that enables the creation of `Scenario` files. 
+  * **Authoring App**: This is a GUI application that enables the creation of `Scenario` files.
     * Scenarios are text files that together with some associated audio files will be executed by the Raspberry Pi 2.
     * This app responsibility is to output a formatted text file and associated it with the correct audio files.
 
@@ -73,8 +73,16 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
   * ![export_jar2](./READMEImages/export_jar2.png)
 
 
-3. Select the `SCALP - AuthoringApp` option from the drop down, mark the `Package required libraries into generate JAR` option and click `Finish`
+3. Select the `SCALP - AuthoringApp` option from the drop down, mark the `Copy required libraries into a sub-folder next to the generated JAR` option and click `Finish`
+  * Name the file as `Enamel.jar`
   * ![export_jar3](./READMEImages/export_jar3.png)
+
+
+4. To run the JAR file do the following:
+  * Move the generated `Enamel.jar` file to the `Enamel` folder inside the project
+  * Open the terminal, navigate to the Enamel folder and run
+    * `/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/bin/java -jar Enamel.jar START_FACTORY FactoryScenarios/`
+
 
 ## API Documentation
 

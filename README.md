@@ -52,7 +52,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 6. In order to run the SCALP App, open `src/enamel` and execute the `SCALP.java` file
   * ![last_step2](./READMEImages/last_step2.png)
 
-## How make an Authoring App JAR
+## How to make an Authoring App JAR
 
 1. To build the Authoring App jar right click on the project folder and select the `Export` folder
   * ![export_jar](./READMEImages/export_jar.png)
@@ -65,7 +65,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 3. Select the `EntryPoint - AuthoringApp` option from the drop down, mark the `Package required libraries into generate JAR` option and click `Finish`
   * ![export_jar3](./READMEImages/export_jar3.png)
 
-## How make an SCALP JAR
+## How to make an SCALP JAR
 
 1. To build the Authoring App jar right click on the project folder and select the `Export` folder
   * ![export_jar](./READMEImages/export_jar.png)

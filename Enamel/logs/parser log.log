@@ -1,0 +1,10 @@
+[09-22-2018 20:50:42.118] [enamel.ScenarioParser] Current line in file: The Life of a Circle 
+[09-22-2018 20:50:43.653] [enamel.ScenarioParser] Current line in file:  
+[09-22-2018 20:50:43.654] [enamel.ScenarioParser] Current line in file: /~pause:3 
+[09-22-2018 20:50:46.658] [enamel.ScenarioParser] Current line in file: /~disp-string:bac 
+[09-22-2018 20:50:46.664] [enamel.ScenarioParser] Current line in file: /~set-voice:1 
+[09-22-2018 20:50:46.794] [enamel.ScenarioParser] Current line in file: What is the order of the alphabets on the braille? 
+[09-22-2018 20:50:49.596] [enamel.ScenarioParser] Current line in file: Press button one for a, b, c, button two for b, a, c 
+[09-22-2018 20:50:54.673] [enamel.ScenarioParser] Current line in file: /~skip-button:0 ONEE 
+[09-22-2018 20:50:54.675] [enamel.ScenarioParser] Current line in file: /~skip-button:1 TWOO 
+[09-22-2018 20:50:54.676] [enamel.ScenarioParser] Current line in file: /~user-input 

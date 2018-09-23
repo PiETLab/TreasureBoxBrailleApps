@@ -82,6 +82,8 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
   * Move the generated `Enamel.jar` file to the `Enamel` folder inside the project
   * Open the terminal, navigate to the Enamel folder and run
     * `/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/bin/java -jar Enamel.jar START_FACTORY FactoryScenarios/`
+    * Remember to create a `logs` folder if it does not exist
+    * ![running_simulator](./READMEImages/running_simulator.png)
 
 
 ## API Documentation

@@ -91,7 +91,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 ## API Documentation
 
 * For further API documentation about every single package and class, visit the `doc` folder and open the `index.html` file.
-  ![documentation](./READMEImages/documentation.png)
+  * ![documentation](./READMEImages/documentation.png)
 
 * To generate a more recent API documentation click on `Project -> Generate Javadoc`
   * ![generate_docs](./READMEImages/generate_docs.png)

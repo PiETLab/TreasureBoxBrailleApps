@@ -5,14 +5,13 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
+
     docker:
       # specify the version you desire here
       - image: jimador/docker-jdk-8-maven-node
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
@@ -35,8 +34,4 @@ jobs:
             mkdir bin
             ant -f build.xml
             zip -r ${RELEASE_FILE}.zip ./Enamel
-            echo ${CIRCLE_PROJECT_USERNAME}
-            echo ${CIRCLE_PROJECT_REPONAME}
-            echo ${CIRCLE_TAG}
-            echo ${RELEASE_FILE}
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip

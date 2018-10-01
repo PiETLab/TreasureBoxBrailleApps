@@ -30,9 +30,8 @@ jobs:
             sudo apt-get install ant -y
             sudo apt install zip unzip
             npm install -g github-release-cli
-            CIRCLE_TAG=Release-$(date '+%A-%W-%Y')
-            VERSION=$(date +%s)
-            RELEASE_FILE=${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}-build-${VERSION}
+            CIRCLE_TAG=TBB-Release-$(date '+%Y-%m-%d-%H-%M-%S')
+            RELEASE_FILE=${CIRCLE_TAG}
             mkdir bin
             ant -f build.xml
             zip -r ${RELEASE_FILE}.zip ./Enamel
@@ -40,5 +39,4 @@ jobs:
             echo ${CIRCLE_PROJECT_REPONAME}
             echo ${CIRCLE_TAG}
             echo ${RELEASE_FILE}
-            echo ${VERSION}
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip

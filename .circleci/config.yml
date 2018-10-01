@@ -28,6 +28,7 @@ jobs:
           name: "Build and Publish Release on GitHub"
           command: |
             sudo apt-get install golang-go
+            export GOPATH=$(go env GOPATH)
             go get github.com/tcnksm/ghr
             VERSION=$(date +%s)
             mkdir bin

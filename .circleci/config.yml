@@ -31,6 +31,7 @@ jobs:
             sudo apt-get install golang-go
             GOPATH=$HOME/go
             export GOPATH
+            echo TESTE
             go get github.com/aktau/github-release
             VERSION=$(date +%s)
             mkdir bin

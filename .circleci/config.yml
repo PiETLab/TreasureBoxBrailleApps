@@ -33,7 +33,9 @@ jobs:
             export GOPATH
             echo TESTE
             go get github.com/aktau/github-release
+            github-release --help
             VERSION=$(date +%s)
+            echo ${VERSION}
             mkdir bin
             ant -f build.xml
             zip -r ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}-build-${VERSION}.zip ./Enamel

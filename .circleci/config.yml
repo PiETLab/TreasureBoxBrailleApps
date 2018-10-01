@@ -5,14 +5,16 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
+
     docker:
       # specify the version you desire here
       - image: jimador/docker-jdk-8-maven-node
 
     working_directory: ~/repo
+
+    branches:
+      only:
+        - master
 
     environment:
       # Customize the JVM maximum heap limit

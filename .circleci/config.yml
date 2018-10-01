@@ -8,7 +8,6 @@ jobs:
     branches:
       only:
         - master
-
     docker:
       # specify the version you desire here
       - image: jimador/docker-jdk-8-maven-node

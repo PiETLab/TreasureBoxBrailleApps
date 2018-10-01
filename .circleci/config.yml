@@ -29,6 +29,7 @@ jobs:
           command: |
             sudo apt-get install golang-go
             GOPATH=$HOME/go
+            export GOPATH
             go get github.com/tcnksm/ghr
             VERSION=$(date +%s)
             mkdir bin

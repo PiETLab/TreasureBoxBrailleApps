@@ -31,8 +31,9 @@ jobs:
             sudo apt install zip unzip
             npm install -g github-release-cli
             VERSION=$(date +%s)
+            RELEASE_FILE=${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}-build-${VERSION}
             mkdir bin
             ant -f build.xml
-            zip -r ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}-build-${VERSION}.zip ./Enamel
+            zip -r ${RELEASE_FILE}.zip ./Enamel
             ls
-            github-release upload --user ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_PROJECT_REPONAME}"."${CIRCLE_TAG}"-build-"${VERSION}".zip" --file .zip
+            github-release upload --user ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_PROJECT_REPONAME}"."${CIRCLE_TAG}"-build-"${VERSION}".zip" --file ${RELEASE_FILE}.zip

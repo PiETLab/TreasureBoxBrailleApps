@@ -8,6 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
+      - image: circleci/golang:1.8
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -25,10 +26,10 @@ jobs:
       - checkout
 
       - run:
-          name: "Publish Release on GitHub"
+          name: "Build and Publish Release on GitHub"
           command: |
             go get github.com/tcnksm/ghr
-            VERSION=${CIRCLE_BUILD_NUM}
+            VERSION=$(date +%s)
             mkdir bin
             ant -f build.xml
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./Enamel/

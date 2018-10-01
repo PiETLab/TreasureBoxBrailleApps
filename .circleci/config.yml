@@ -27,11 +27,13 @@ jobs:
       - run:
           name: "Build and Publish Release on GitHub"
           command: |
+            sudo apt install zip unzip
             sudo apt-get install golang-go
             GOPATH=$HOME/go
             export GOPATH
-            go get github.com/tcnksm/ghr
+            go get github.com/aktau/github-release
             VERSION=$(date +%s)
             mkdir bin
             ant -f build.xml
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./Enamel/
+            zip -r ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}-build-${VERSION}.zip ./Enamel
+            github-release upload --user ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_PROJECT_REPONAME}"."${CIRCLE_TAG}"-build-"${VERSION}".zip" --file .zip

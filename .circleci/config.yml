@@ -24,4 +24,4 @@ jobs:
     steps:
       - checkout
 
-      - run: ant -f build.xml
+      - run: mkdir bin && ant -f build.xml

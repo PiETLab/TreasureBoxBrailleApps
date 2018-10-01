@@ -30,6 +30,7 @@ jobs:
             sudo apt-get install ant -y
             sudo apt install zip unzip
             npm install -g github-release-cli
+            CIRCLE_TAG=Release-$(date '+%A-%W-%Y')
             VERSION=$(date +%s)
             RELEASE_FILE=${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}-build-${VERSION}
             mkdir bin

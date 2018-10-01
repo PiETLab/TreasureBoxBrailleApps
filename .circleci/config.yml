@@ -24,7 +24,4 @@ jobs:
     steps:
       - checkout
 
-      - run: gradle dependencies
-          name: Deploy
-           command: |
-             ant -f build.xml
+      - run: ant -f build.xml

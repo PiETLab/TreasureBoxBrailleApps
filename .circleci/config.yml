@@ -5,7 +5,6 @@
 version: 2
 jobs:
   build:
-
     docker:
       # specify the version you desire here
       - image: jimador/docker-jdk-8-maven-node
@@ -32,3 +31,12 @@ jobs:
             ant -f build.xml
             zip -r ${RELEASE_FILE}.zip ./Enamel
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master

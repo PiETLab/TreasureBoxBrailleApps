@@ -8,6 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
+      - image: circleci/node
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -28,8 +29,6 @@ jobs:
           name: "Build and Publish Release on GitHub"
           command: |
             sudo apt install zip unzip
-            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-            sudo apt-get install -y nodejs
             npm install -g github-release-cli
             VERSION=$(date +%s)
             echo ${VERSION}

@@ -27,6 +27,7 @@ jobs:
       - run:
           name: "Build and Publish Release on GitHub"
           command: |
+            sudo apt-get install ant
             sudo apt install zip unzip
             npm install -g github-release-cli
             VERSION=$(date +%s)

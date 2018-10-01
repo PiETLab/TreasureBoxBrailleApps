@@ -35,5 +35,5 @@ jobs:
             mkdir bin
             ant -f build.xml
             zip -r ${RELEASE_FILE}.zip ./Enamel
-            ls
-            github-release upload --user ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_PROJECT_REPONAME}"."${CIRCLE_TAG}"-build-"${VERSION}".zip" --file ${RELEASE_FILE}.zip
+            echo 11111111
+            github-release upload --owner Daniel --user ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_PROJECT_REPONAME}"."${CIRCLE_TAG}"-build-"${VERSION}".zip" --file ${RELEASE_FILE}.zip

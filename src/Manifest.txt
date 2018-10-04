@@ -1,1 +1,1 @@
-Main-Class: enamel.EntryPoint
+Main-Class: common.EntryPoint

@@ -285,6 +285,19 @@ public class GUI extends JFrame {
 			}
 		});
 		
+		
+		
+		KeyStroke key33 = KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK);
+		actionMap.put(key33, new AbstractAction("Insert Before") {
+			private static final long serialVersionUID = 1L;
+			@Override
+		    public void actionPerformed(ActionEvent e) {
+				if (rightPanel.btnInsert.isEnabled()) {
+					rightPanel.btnInsert.doClick();
+				}
+			}
+		});
+		
 		KeyStroke key31 = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key31, new AbstractAction("Test") {
 			private static final long serialVersionUID = 1L;
@@ -349,41 +362,10 @@ public class GUI extends JFrame {
 		
 		KeyStroke key30 = KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key30,  "Location Tag");
-		
-		
-		
 				
-		counterMap.put("New Scenario", 0);
-		counterMap.put("New Item", 0);
-		counterMap.put("New Question", 0);
-		counterMap.put("Move Up", 0);
-		counterMap.put("Move Down", 0);
-		counterMap.put("Delete", 0);
-		counterMap.put("Edit", 0);
-		counterMap.put("Save", 0);
-		counterMap.put("Load", 0);
-		counterMap.put("Pause", 0);
-		counterMap.put("Text-to-speech", 0);
-		counterMap.put("Display on Braille Cell", 0);
-		counterMap.put("Repeat", 0);
-		counterMap.put("Button Repeat", 0);
-		counterMap.put("Button Location", 0);
-		counterMap.put("User Input", 0);
-		counterMap.put("Play Sound", 0);
-		counterMap.put("Record Audio",  0);
-		counterMap.put("Reset Buttons", 0);
-		counterMap.put("Go To Location", 0);
-		counterMap.put("Clear All", 0);
-		counterMap.put("Clear Cell", 0);
-		counterMap.put("Set Pins", 0);
-		counterMap.put("Set Character", 0);
-		counterMap.put("Raise Pin", 0);
-		counterMap.put("Lower Pin", 0);
-		counterMap.put("Set Voice", 0);
-		counterMap.put("Location Tag", 0);
-		counterMap.put("Test",  0);
-		
-		
+
+		resetCounter();
+
 		
 		if (functionCounter.exists())
 		{
@@ -396,7 +378,14 @@ public class GUI extends JFrame {
 			
 			if (sc.hasNext())
 			{
-			    loadCounter(functionCounter, sc);
+				try {
+					loadCounter(functionCounter, sc);
+				} catch (NumberFormatException e2) { 	// Catches differences between current CounterMap and existing functionCounter.txt
+					//e2.printStackTrace();
+					System.err.println("An error has occured in loading functionCounter into counterMap");
+					resetCounter();
+					this.upd(); 						// Resets functionCounter.txt after discrepancy
+				}
 			}
 		}
 		
@@ -425,7 +414,7 @@ public class GUI extends JFrame {
 	      } else if (newItemMap.containsKey(keyStroke) && rightPanel.btnNew.isEnabled())
 	      {
 	    	  String value = newItemMap.get(keyStroke);
-	    	  newItem.processAnswer(value);
+	    	  newItem.processAnswer(value, "add");
 	    	  logger.log(Level.INFO, "User has used the " + value + " hotkey.");
 	    	  return true;
 	      }
@@ -508,6 +497,7 @@ public class GUI extends JFrame {
 		counterMap.put("Move Down", 0);
 		counterMap.put("Delete", 0);
 		counterMap.put("Edit", 0);
+		counterMap.put("Insert Before", 0);
 		counterMap.put("Save", 0);
 		counterMap.put("Load", 0);
 		counterMap.put("Pause", 0);
@@ -538,7 +528,6 @@ public class GUI extends JFrame {
 	private void loadCounter(File file, Scanner sc)
 	{
 		
-		
 		for (String i : this.counterMap.keySet())
 		{
 			sc.findInLine(i);
@@ -549,7 +538,6 @@ public class GUI extends JFrame {
 			
 		}
 				
-		
 	}
 	
 }

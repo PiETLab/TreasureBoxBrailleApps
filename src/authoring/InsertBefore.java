@@ -6,17 +6,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import commands.SoundCommand;
-import commands.TTSCommand;
 import listeners.NewButtonListener;
 import listeners.NewQuestionListener;
 
@@ -25,8 +21,6 @@ public class InsertBefore {
 	private static final String FONT_FACE = "Arial";
 	private static final int FONT_SIZE = 12;
 	private JFrame frame;
-	private RecordAudio rc= new RecordAudio();
-	private GUI gui;
 	ColourMapper mapper;
 	Object value;
 	
@@ -34,7 +28,6 @@ public class InsertBefore {
 	public InsertBefore(GUI gui)
 	{
 	
-	this.gui=gui;
 	// Show the Add Item dialog
 	JPanel panel = new JPanel();
 	panel.setLayout(new GridLayout(7, 1,5,3 ));
@@ -53,7 +46,7 @@ public class InsertBefore {
 	JButton btnQuestion = new JButton("New Question");
 	btnQuestion.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-			NewQuestionListener newQ= new NewQuestionListener(gui, mapper, 1);
+			new NewQuestionListener(gui, mapper, 1);
 			frame.dispose();
 			
 		}
@@ -147,7 +140,7 @@ public class InsertBefore {
 			"Set Pins", "Set Character", "Raise Pin", "Lower Pin", "Set Voice", "Location Tag"};
 	
 
-	JComboBox comboBox = new JComboBox<Object>(array);
+	JComboBox<Object> comboBox = new JComboBox<Object>(array);
 	comboBox.setSelectedItem("Advance Options");
 	comboBox.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 	panel.add(comboBox);

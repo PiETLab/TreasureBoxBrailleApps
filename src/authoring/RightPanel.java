@@ -38,6 +38,7 @@ public class  RightPanel extends JPanel implements ActionListener {
 	public JButton readFile = new JButton("Read Audio File");
 	public JButton btnMoveUp = new JButton("Move Item Up (Control \u2191)");
 	public JButton btnMoveDown = new JButton("Move Item Down (Control \u2193)");
+	public JButton btnInsert = new JButton("Insert Before(Control B)");
 	public JButton btnDelete = new JButton("Delete Item (Control D)");
 	public JButton btnEdit = new JButton("Edit Item (Control E)");
 	public JButton btnNew = new JButton("New Item (Control I)");
@@ -75,6 +76,7 @@ public class  RightPanel extends JPanel implements ActionListener {
 		btnSave.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnStart.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnStop.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
+		btnInsert.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		readFile.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnMoveUp.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		btnMoveDown.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
@@ -88,6 +90,7 @@ public class  RightPanel extends JPanel implements ActionListener {
 		add(btnNew);
 		add(btnNewQuestion);
 		add(btnEdit);
+		add(btnInsert);
 		//add(btnStop);
 		//add(readFile);
 		add(btnMoveUp);
@@ -103,14 +106,16 @@ public class  RightPanel extends JPanel implements ActionListener {
 		btnStop.addActionListener(this);
 		btnMoveUp.addActionListener(this);
 		btnMoveDown.addActionListener(this);
+	//	btnInsert.addActionListener(this);
 		btnNew.addActionListener(new NewButtonListener(gui));
+		btnInsert.addActionListener(this );
 		btnDelete.addActionListener(this);
 		btnEdit.addActionListener(this);
 		readFile.addActionListener(this);
 		btnSave.addActionListener(new SaveListener(gui));
 		btnLoad.addActionListener(new LoadListener(gui, mapper));
 		btnNewScenario.addActionListener(new NewScenarioListener(gui));
-		btnNewQuestion.addActionListener(new NewQuestionListener(gui, mapper));		
+		btnNewQuestion.addActionListener(new NewQuestionListener(gui, mapper, 0));		
 		btnTestScenario.addActionListener(new TestListener(gui));
 		
 		
@@ -127,6 +132,7 @@ public class  RightPanel extends JPanel implements ActionListener {
 		btnStart.setEnabled(false);
 		btnEdit.setEnabled(false);
 		btnNewQuestion.setEnabled(false);
+		btnInsert.setEnabled(false);
 
 		this.gui = gui;
 	}
@@ -155,7 +161,10 @@ public class  RightPanel extends JPanel implements ActionListener {
 			gui.counterMap.put("Delete", gui.counterMap.get("Delete") + 1);
 		} else if (e.getSource() == btnEdit) {
 			gui.getLeftPanel().EditItem();
-			gui.counterMap.put("Edit", gui.counterMap.get("Edit") + 1);
+			gui.counterMap.put("Edit", gui.counterMap.get("Edit") + 1);}
+		else if (e.getSource() == btnInsert) {
+			gui.getLeftPanel().InsertItemBefore();
+			gui.counterMap.put("Insert Before", gui.counterMap.get("Insert Before") + 1);
 		}else if (e.getSource() == readFile) {
 			this.fileChooser();
 		}
@@ -177,7 +186,7 @@ public class  RightPanel extends JPanel implements ActionListener {
 			System.out.println("You chose to open this file: " + chooser.getSelectedFile());
 			String name = chooser.getSelectedFile().toString();
 			ReadFile read = new ReadFile();
-			gui.getLeftPanel().addItem(new SoundCommand(name));
+			gui.getLeftPanel().addItem(new SoundCommand(name, gui));
 			read.playSound(name);
 		}
 	}
@@ -236,6 +245,17 @@ public class  RightPanel extends JPanel implements ActionListener {
 	public void setEdit(boolean status) {
 		btnEdit.setEnabled(status);
 	}
+	
+	/**
+	 * A method that changes the availability of a btnInsert button
+	 *
+	 * @param status
+	 *            parameter that is either true or false
+	 */
+	public void setInsertBefore(boolean status) {
+		btnInsert.setEnabled(status);
+	}
+
 
 	/**
 	 * A method that changes the availability of a btnStart button

@@ -18,13 +18,11 @@ public class RecordAudio {
 	private boolean isRecording = false;
 	private boolean noRecording = true;
 	public boolean recordFlag= false;
-	private GUI gui;
 	ThreadRunnable thread = null;
 	public File file = null;
 
 	public void recordAudio(GUI gui)
 	{
-		this.gui=gui;
 		JDialog recordDialog = new JDialog(gui, "Record Audio");
 		recordDialog.setModal(true);
 		JPanel panel = new JPanel();

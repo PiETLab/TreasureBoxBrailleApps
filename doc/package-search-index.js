@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"authoring"}]
+packageSearchIndex = [{"l":"enamel"}]

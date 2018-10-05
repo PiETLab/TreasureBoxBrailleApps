@@ -22,6 +22,7 @@ jobs:
       - run:
           name: "SCALP and AuthoringApp - Build and Publish Release on GitHub"
           command: |
+            now="$(date)"
             sudo apt-get install ant -y
             sudo apt install zip unzip
             npm install -g github-release-cli
@@ -32,14 +33,20 @@ jobs:
             echo $(ls)
             echo -----
 
-            SCALP_RELEASE_FILE=SCALP-Release-$(date '+%Y-%m-%d-%H-%M-%S')
+            CIRCLE_TAG=Release-$(date '+%Y-%m-%d-%H-%M-%S')
+
+            SCALP_RELEASE_FILE=SCALP
             ant -f buildScripts/SCALP.xml
             mv FactoryScenarios ./Enamel/FactoryScenarios
             mv mbrola/mbrola.jar ./Enamel/mbrola.jar
             mkdir ./Enamel/USBBuffer && mkdir ./Enamel/logs
-
             zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel
-            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${RELEASE_FILE} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip
+
+            AUTHORING_APP_RELEASE_FILE=AUTHORING-APP
+            ant -f buildScripts/AuthoringApp.xml
+            zip -r ${AUTHORING_APP_RELEASE_FILE}.zip ./Enamel/AuthoringApp.jar ./Enamel/AuthoringApp_lib
+
+            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${SCALP_RELEASE_FILE} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
 
 workflows:
   version: 2

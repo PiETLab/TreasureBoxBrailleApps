@@ -37,8 +37,8 @@ jobs:
 
             SCALP_RELEASE_FILE=SCALP
             ant -f buildScripts/SCALP.xml
-            mv FactoryScenarios ./Enamel/FactoryScenarios
-            mv mbrola/mbrola.jar ./Enamel/mbrola.jar
+            cp -R FactoryScenarios ./Enamel/FactoryScenarios
+            cp -R mbrola/mbrola.jar ./Enamel/mbrola.jar
             mkdir ./Enamel/USBBuffer && mkdir ./Enamel/logs
             zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel
 

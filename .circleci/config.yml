@@ -34,8 +34,12 @@ jobs:
 
             SCALP_RELEASE_FILE=SCALP-Release-$(date '+%Y-%m-%d-%H-%M-%S')
             ant -f buildScripts/SCALP.xml
-            zip -r ${RELEASE_FILE}.zip ./Enamel
-            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip
+            mv FactoryScenarios ./Enamel/FactoryScenarios
+            mv mbrola/mbrola.jar ./Enamel/mbrola.jar
+            mkdir ./Enamel/USBBuffer && mkdir ./Enamel/logs
+
+            zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel
+            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${RELEASE_FILE} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip
 
 workflows:
   version: 2

@@ -30,6 +30,11 @@ jobs:
 
             CIRCLE_TAG=Release-$(date '+%Y-%m-%d-%H-%M-%S')
 
+            AUTHORING_APP_RELEASE_FILE=AUTHORING-APP
+            ant -f buildScripts/AuthoringApp.xml
+            zip -r ${AUTHORING_APP_RELEASE_FILE}.zip ./Enamel
+            rm -rf ./Enamel
+
             SCALP_RELEASE_FILE=SCALP
             ant -f buildScripts/SCALP.xml
             cp -R FactoryScenarios ./Enamel/FactoryScenarios
@@ -37,10 +42,6 @@ jobs:
             mkdir ./Enamel/USBBuffer && mkdir ./Enamel/logs
             zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel
             rm -rf ./Enamel
-
-            AUTHORING_APP_RELEASE_FILE=AUTHORING-APP
-            ant -f buildScripts/AuthoringApp.xml
-            zip -r ${AUTHORING_APP_RELEASE_FILE}.zip ./Enamel
 
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
 

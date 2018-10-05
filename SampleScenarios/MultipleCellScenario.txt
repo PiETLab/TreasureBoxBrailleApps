@@ -1,8 +1,0 @@
-Cell 4
-Button 4
-/~pause:1
-
-/~disp-cell-pins:0 10000000
-/~disp-cell-pins:1 10000000
-/~disp-cell-pins:2 10000000
-/~disp-cell-pins:3 10000000

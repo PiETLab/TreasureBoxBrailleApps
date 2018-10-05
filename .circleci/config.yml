@@ -20,15 +20,20 @@ jobs:
       - checkout
 
       - run:
-          name: "Build and Publish Release on GitHub"
+          name: "SCALP and AuthoringApp - Build and Publish Release on GitHub"
           command: |
             sudo apt-get install ant -y
             sudo apt install zip unzip
             npm install -g github-release-cli
-            CIRCLE_TAG=TBB-Release-$(date '+%Y-%m-%d-%H-%M-%S')
-            RELEASE_FILE=${CIRCLE_TAG}
             mkdir bin
-            ant -f build.xml
+
+            echo -----
+            echo $(pwd)
+            echo $(ls)
+            echo -----
+
+            SCALP_RELEASE_FILE=SCALP-Release-$(date '+%Y-%m-%d-%H-%M-%S')
+            ant -f buildScripts/SCALP.xml
             zip -r ${RELEASE_FILE}.zip ./Enamel
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${RELEASE_FILE} --body "Release version: ${VERSION}" ${RELEASE_FILE}.zip
 

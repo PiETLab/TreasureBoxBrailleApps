@@ -3,8 +3,8 @@ package common;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 import authoring.GUI;
 
@@ -20,7 +20,7 @@ public class MainThread implements Runnable {
 	@Override
 	public void run() {
 		GUI frame = new GUI();
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowListener()
 				{
 

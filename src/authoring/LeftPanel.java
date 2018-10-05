@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -261,7 +262,7 @@ public void recalculateButtonStatus() {
 }
 
 private void setup() {
-	  KeyStroke key1 = KeyStroke.getKeyStroke(KeyEvent.VK_UP, KeyEvent.CTRL_DOWN_MASK );
+	  KeyStroke key1 = KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.CTRL_DOWN_MASK );
 	  actionMap.put(key1, new AbstractAction("action1") {
 		private static final long serialVersionUID = 1L;
 		@Override
@@ -270,7 +271,7 @@ private void setup() {
 		}
 	  });
 	  
-	  KeyStroke key2 = KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, KeyEvent.CTRL_DOWN_MASK);
+	  KeyStroke key2 = KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, InputEvent.CTRL_DOWN_MASK);
 	  actionMap.put(key2, new AbstractAction("action2") {
 		private static final long serialVersionUID = 1L;
 		@Override

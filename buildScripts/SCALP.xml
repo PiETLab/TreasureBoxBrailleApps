@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project TreasureBoxBrailleApps with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/../.."/>
+    <property name="dir.jarfile" value="${dir.workspace}/TreasureBoxBrailleApps/Enamel"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/Enamel.jar">
+            <manifest>
+                <attribute name="Main-Class" value="enamel.SCALP"/>
+                <attribute name="Class-Path" value=". Enamel_lib/assertj-core-3.6.2.jar Enamel_lib/freetts.jar Enamel_lib/en_us.jar Enamel_lib/cmutimelex.jar Enamel_lib/cmu_time_awb.jar Enamel_lib/cmulex.jar Enamel_lib/cmu_us_kal.jar Enamel_lib/cmudict04.jar Enamel_lib/commons-io-2.5.jar Enamel_lib/freetts-jsapi10.jar Enamel_lib/jsapi.jar Enamel_lib/mbrola.jar Enamel_lib/mbrola.jar Enamel_lib/junit.jar Enamel_lib/pi4j-core-javadoc.jar Enamel_lib/pi4j-core-sources.jar Enamel_lib/pi4j-core.jar Enamel_lib/pi4j-device-javadoc.jar Enamel_lib/pi4j-device-sources.jar Enamel_lib/pi4j-device.jar Enamel_lib/pi4j-example-javadoc.jar Enamel_lib/pi4j-example-sources.jar Enamel_lib/pi4j-example.jar Enamel_lib/pi4j-gpio-extension-javadoc.jar Enamel_lib/pi4j-gpio-extension-sources.jar Enamel_lib/pi4j-gpio-extension.jar Enamel_lib/pi4j-service-javadoc.jar Enamel_lib/pi4j-service-sources.jar Enamel_lib/pi4j-service.jar"/>
+            </manifest>
+            <fileset dir="${dir.workspace}/TreasureBoxBrailleApps/bin"/>
+        </jar>
+        <delete dir="${dir.jarfile}/Enamel_lib"/>
+        <mkdir dir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/assertj-core-3.6.2.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/freetts.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/en_us.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmutimelex.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmu_time_awb.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmulex.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmu_us_kal.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmudict04.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/commons-io-2.5.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/freetts-jsapi10.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/jsapi.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/mbrola.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/mbrola/mbrola.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/junit.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-core-javadoc.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-core-sources.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-core.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-device-javadoc.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-device-sources.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-device.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-example-javadoc.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-example-sources.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-example.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-gpio-extension-javadoc.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-gpio-extension-sources.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-gpio-extension.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-service-javadoc.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-service-sources.jar" todir="${dir.jarfile}/Enamel_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/pi4jWindows/pi4j-service.jar" todir="${dir.jarfile}/Enamel_lib"/>
+    </target>
+</project>

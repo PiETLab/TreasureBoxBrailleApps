@@ -101,6 +101,7 @@ public class NewButtonListener implements ActionListener {
 		
 		JButton btnNewButton = new JButton("Text To Speech");
 		btnNewButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				processAnswer("Text-to-speech");
@@ -114,6 +115,7 @@ public class NewButtonListener implements ActionListener {
 		
 		JButton btnRecordAudio = new JButton("Record Audio");
 		btnRecordAudio.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				processAnswer("Record Audio");
@@ -128,6 +130,7 @@ public class NewButtonListener implements ActionListener {
 		
 		JButton btnPlaySound = new JButton("Play Sound");
 		btnPlaySound.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				processAnswer("Play Sound");
@@ -142,6 +145,7 @@ public class NewButtonListener implements ActionListener {
 		
 		JButton btnPause = new JButton("Pause");
 		btnPause.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				processAnswer("Pause");
@@ -158,6 +162,7 @@ public class NewButtonListener implements ActionListener {
 		
 		JButton userInput = new JButton("User Input");
 		userInput.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				processAnswer("User Input");
@@ -173,6 +178,7 @@ public class NewButtonListener implements ActionListener {
 		
 		JButton btnDisplayOnBraille = new JButton("Display on Braille Cell");
 		btnDisplayOnBraille.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				processAnswer("Display on Braille Cell");
@@ -212,7 +218,8 @@ public class NewButtonListener implements ActionListener {
 		
 		
 		  comboBox.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent event) {
+	            @Override
+				public void actionPerformed(ActionEvent event) {
 	                //
 	                // Get the source of the component, which is our combo
 	                // box.

@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
 import listeners.TestListener;
 
 /**
@@ -66,11 +68,12 @@ public class VisualPlayer extends Player {
 
 		SwingUtilities.invokeLater(new Runnable() {
 			//@Override
+			@Override
 			public void run() {
 				frame = new JFrame();
 				frame.setTitle("Simulator");
 				frame.setBounds(100, 100, 627, 459);
-				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				
 				// Close Simulator and stop the audio.
 				frame.addWindowListener(new java.awt.event.WindowAdapter() {

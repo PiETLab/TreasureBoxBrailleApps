@@ -263,6 +263,7 @@ public class QuestionWindow extends JFrame{
 		 * Enter Text Button for Introduction
 		 */
 		text.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			
 				// Creates a text area that wraps properly and scrolls vertically only
@@ -321,6 +322,7 @@ public class QuestionWindow extends JFrame{
 		 * Record Audio Button
 		 */
 		record.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 				recordAudio();
@@ -349,6 +351,7 @@ public class QuestionWindow extends JFrame{
 		 * Play Audio Button
 		 */
 		play.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 				JFileChooser load = new JFileChooser();
@@ -384,6 +387,7 @@ public class QuestionWindow extends JFrame{
 		 * Enter Text Button for incorrect text
 		 */
 		textIncorrect.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				repeatField.setLineWrap(true);
@@ -442,6 +446,7 @@ public class QuestionWindow extends JFrame{
 		 * Record Audio Button
 		 */	
 		recordIncorrect.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				recordAudio();
@@ -469,6 +474,7 @@ public class QuestionWindow extends JFrame{
 		 */
 		
 		playIncorrect.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -504,6 +510,7 @@ public class QuestionWindow extends JFrame{
 		 */
 		
 		textCorrect.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				correctField.setLineWrap(true);
@@ -561,6 +568,7 @@ public class QuestionWindow extends JFrame{
 		 * Record Audio Button
 		 */
 		recordCorrect.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -592,6 +600,7 @@ public class QuestionWindow extends JFrame{
 		 */
 	
 		playCorrect.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -670,6 +679,7 @@ public class QuestionWindow extends JFrame{
 
 	ok = new JButton("OK");
 	ok.addActionListener(new ActionListener() {
+		@Override
 		public void actionPerformed(ActionEvent arg0) {
 		
 			frame.dispose();	
@@ -683,6 +693,7 @@ public class QuestionWindow extends JFrame{
 	
 	cancel = new JButton("Cancel");
 	cancel.addActionListener(new ActionListener() {
+		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			frame.setVisible(false);
 		}

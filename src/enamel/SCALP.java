@@ -226,7 +226,8 @@ public class SCALP {
      */
     private  void keySelector() {
         SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 speakState();
                 frame.addKeyListener(new KeyListener() {
                     @Override
@@ -506,7 +507,8 @@ public class SCALP {
             frame.dispose();
         }
         new Thread(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 ScenarioParser s;
 				s = new ScenarioParser();
 				 voice.deallocate();

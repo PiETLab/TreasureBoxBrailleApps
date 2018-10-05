@@ -46,7 +46,7 @@ jobs:
             ant -f buildScripts/AuthoringApp.xml
             zip -r ${AUTHORING_APP_RELEASE_FILE}.zip ./Enamel/AuthoringApp.jar ./Enamel/AuthoringApp_lib
 
-            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${SCALP_RELEASE_FILE} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
+            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
 
 workflows:
   version: 2

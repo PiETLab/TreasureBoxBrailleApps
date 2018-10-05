@@ -102,8 +102,7 @@ public class TestListener implements ActionListener {
 		exportFile(scenarioFile, sb.toString());
 
 		 playerThread = new Thread("Player Thread") {
-		    @Override
-			public void run(){    
+		    public void run(){    
 		        ScenarioParser s = new ScenarioParser();        
 				s.setScenarioFile(scenarioFile.getAbsolutePath());
 		    }
@@ -142,7 +141,7 @@ public class TestListener implements ActionListener {
 		}
 	}
 	
-	
-	
-	
+
+
+
 }

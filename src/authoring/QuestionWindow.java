@@ -1,6 +1,5 @@
 package authoring;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -13,21 +12,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -69,9 +64,9 @@ public class QuestionWindow extends JFrame{
 	private GUI gui;
 	private String strNumOfButtons;
 	private int index=0;
-	private boolean isRecording = false;
-	private boolean noRecording = true;
-	private boolean recordFlag= false;
+//	private boolean isRecording = false;
+//	private boolean noRecording = true;
+//	private boolean recordFlag= false;
 	private String introAudio= "none";
 	private String correctAudio= "none";
 	private String incorrectAudio= "none";
@@ -82,12 +77,16 @@ public class QuestionWindow extends JFrame{
 	ThreadRunnable thread = null;
 	File file = null;
 	
+	
+	
+	public QuestionWindow()
+	{
+		
+	}
 
 	/**
 	 * Create the application.
 	 * This constructor is used for NewQuestionListener
-	 * @param gui
-	 *            the gui object to be used
 	 */
 	public QuestionWindow(GUI gui){
 		this.gui= gui;
@@ -99,8 +98,6 @@ public class QuestionWindow extends JFrame{
 	/**
 	 * Create the application.
 	 * This constructor is used for Edit Question
-	 * @param a
-	 *          the question command to be evaluated
 	 */
 	public QuestionWindow(QuestionCommand a){
 		this.introField.setText(a.getIntroField());
@@ -165,6 +162,7 @@ public class QuestionWindow extends JFrame{
 	
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws InterruptedException 
 	 */
 	public void initialize()  {
 
@@ -263,7 +261,6 @@ public class QuestionWindow extends JFrame{
 		 * Enter Text Button for Introduction
 		 */
 		text.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 			
 				// Creates a text area that wraps properly and scrolls vertically only
@@ -322,13 +319,13 @@ public class QuestionWindow extends JFrame{
 		 * Record Audio Button
 		 */
 		record.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				recordAudio();
-				if (file != null && recordFlag==true)
+				RecordAudio rc= new RecordAudio();
+				rc.recordAudio(gui);
+				if (rc.file != null && rc.recordFlag==true)
 				{
-					introAudio= file.toString();
+					introAudio= rc.file.toString();
 					String basename = FilenameUtils.getBaseName(introAudio);
 					record.setText(basename+".wav");
 					introField.setText("");
@@ -351,7 +348,6 @@ public class QuestionWindow extends JFrame{
 		 * Play Audio Button
 		 */
 		play.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 				JFileChooser load = new JFileChooser();
@@ -387,7 +383,6 @@ public class QuestionWindow extends JFrame{
 		 * Enter Text Button for incorrect text
 		 */
 		textIncorrect.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				repeatField.setLineWrap(true);
@@ -446,13 +441,13 @@ public class QuestionWindow extends JFrame{
 		 * Record Audio Button
 		 */	
 		recordIncorrect.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				recordAudio();
-				if (file != null && recordFlag==true)
+				RecordAudio rc= new RecordAudio();
+				rc.recordAudio(gui);
+				//recordAudio();
+				if (rc.file != null && rc.recordFlag==true)
 				{
-					incorrectAudio= file.toString();
+					incorrectAudio= rc.file.toString();
 					String basename = FilenameUtils.getBaseName(incorrectAudio);
 					recordIncorrect.setText(basename+".wav");
 					textIncorrect.setEnabled(false);
@@ -474,7 +469,6 @@ public class QuestionWindow extends JFrame{
 		 */
 		
 		playIncorrect.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -510,7 +504,6 @@ public class QuestionWindow extends JFrame{
 		 */
 		
 		textCorrect.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				correctField.setLineWrap(true);
@@ -568,15 +561,15 @@ public class QuestionWindow extends JFrame{
 		 * Record Audio Button
 		 */
 		recordCorrect.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				RecordAudio rc= new RecordAudio();
+				rc.recordAudio(gui);
 				
-				
-				recordAudio();
-				if (file != null && recordFlag==true)
+				//recordAudio();
+				if (rc.file != null && rc.recordFlag==true)
 				{
-					correctAudio= file.toString();
+					correctAudio= rc.file.toString();
 					String basename = FilenameUtils.getBaseName(correctAudio);
 					recordCorrect.setText(basename+".wav");
 					textCorrect.setEnabled(false);
@@ -600,7 +593,6 @@ public class QuestionWindow extends JFrame{
 		 */
 	
 		playCorrect.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -679,7 +671,6 @@ public class QuestionWindow extends JFrame{
 
 	ok = new JButton("OK");
 	ok.addActionListener(new ActionListener() {
-		@Override
 		public void actionPerformed(ActionEvent arg0) {
 		
 			frame.dispose();	
@@ -693,7 +684,6 @@ public class QuestionWindow extends JFrame{
 	
 	cancel = new JButton("Cancel");
 	cancel.addActionListener(new ActionListener() {
-		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			frame.setVisible(false);
 		}
@@ -812,101 +802,6 @@ public class QuestionWindow extends JFrame{
 	public void getButtonField(String button)
 	{
 		getButtonField().setText(button);;
-	}
-
-	
-	
-	////////////////////////////RECORD AUDIO////////////////////////////////////////////////////
-	
-	
-	private void recordAudio()
-	{
-		JDialog recordDialog = new JDialog(gui, "Record Audio");
-		recordDialog.setModal(true);
-		JPanel panel = new JPanel();
-		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		recordDialog.setSize(200, 180);
-		recordDialog.setResizable(false);
-		recordDialog.setLocationRelativeTo(gui);
-	//	JLabel label = new JLabel("Press Record button to start recording, Stop button to stop and save, and Cancel button to canel recording");
-		JButton recordButton = new JButton("Start Recording");
-		recordButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				gui.logger.log(Level.INFO, "Recording Started");
-				isRecording=true;
-				noRecording = false;
-				recordButton.setForeground(Color.RED);
-				recordButton.setText("Recording...");
-				thread = new ThreadRunnable();
-				thread.start();			
-			}
-		});
-		
-		JButton stopButton = new JButton("Stop Recording");
-		stopButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(isRecording==true){
-				gui.logger.log(Level.INFO, "Recording Stopped");
-				isRecording=false;
-				recordButton.setForeground(Color.BLACK);
-				recordButton.setText("Start Recording");
-				file = thread.stopRecording();
-				//recordDialog.setVisible(false);	
-				}
-			}	
-		});
-		
-		JButton cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(noRecording)
-					recordDialog.setVisible(false);
-				else
-					{
-						gui.logger.log(Level.INFO, "Recording Cancelled");
-						isRecording=false;
-						thread.cancel();
-						recordFlag=false;
-						recordDialog.setVisible(false);	
-					}
-				}
-				
-		});
-		
-		
-		JButton okButton = new JButton("OK");
-		okButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(noRecording)
-					recordDialog.setVisible(false);
-				else
-					{
-						gui.logger.log(Level.INFO, "Recording Done");
-						isRecording=false;
-						thread.cancel();
-						recordFlag=true;
-						recordDialog.setVisible(false);	
-					}
-				}
-				
-		});
-				
-		recordDialog.setLayout(new BorderLayout());
-		panel.add(recordButton);
-		panel.add(stopButton);
-		panel.add(okButton);
-		panel.add(cancelButton);
-		recordDialog.add(panel, BorderLayout.CENTER);
-		recordDialog.setVisible(true);		
 	}
 
 	

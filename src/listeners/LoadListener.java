@@ -233,7 +233,7 @@ public class LoadListener implements ActionListener {
 				pc = new UserInputCommand();
 				break;
 			case "sound":
-				pc = new SoundCommand(args);
+				pc = new SoundCommand(args, gui);
 				break;
 			case "reset-buttons":
 				pc = new ResetButtonCommand(args);

@@ -30,7 +30,6 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
 import java.awt.KeyEventDispatcher;
 import javax.swing.SwingUtilities;
 
@@ -187,7 +186,7 @@ public class GUI extends JFrame {
 			}
 		});
 	 
-		KeyStroke key3 = KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK);
+		KeyStroke key3 = KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK + KeyEvent.SHIFT_DOWN_MASK);
 		actionMap.put(key3, new AbstractAction("New Scenario") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -196,7 +195,7 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key4 = KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK);
+		KeyStroke key4 = KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key4, new AbstractAction("New Item") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -207,7 +206,7 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key6 = KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK);
+		KeyStroke key6 = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key6, new AbstractAction("New Question") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -242,7 +241,7 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key10 = KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK);
+		KeyStroke key10 = KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key10, new AbstractAction("Delete") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -253,7 +252,7 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key11 = KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK);
+		KeyStroke key11 = KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key11, new AbstractAction("Save") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -264,7 +263,7 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key12 = KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK);
+		KeyStroke key12 = KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key12, new AbstractAction("Load") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -275,7 +274,7 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key32 = KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK);
+		KeyStroke key32 = KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key32, new AbstractAction("Edit") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -286,7 +285,20 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key31 = KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK);
+		
+		
+		KeyStroke key33 = KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK);
+		actionMap.put(key33, new AbstractAction("Insert Before") {
+			private static final long serialVersionUID = 1L;
+			@Override
+		    public void actionPerformed(ActionEvent e) {
+				if (rightPanel.btnInsert.isEnabled()) {
+					rightPanel.btnInsert.doClick();
+				}
+			}
+		});
+		
+		KeyStroke key31 = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
 		actionMap.put(key31, new AbstractAction("Test") {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -297,94 +309,63 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		KeyStroke key13 = KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key13 = KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key13,  "Pause");
 		
-		KeyStroke key14 = KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key14 = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key14,  "Text-to-speech");
 		
-		KeyStroke key15 = KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key15 = KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key15,  "Display on Braille Cell");
 		
-		KeyStroke key16 = KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key16 = KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key16, "Repeat");
 		
-		KeyStroke key17 = KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key17 = KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key17, "Button Repeat");
 		
-		KeyStroke key18 = KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key18 = KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key18, "Button Location");
 		
-		KeyStroke key19 = KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key19 = KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key19,  "User Input");
 		
-		KeyStroke key20 = KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key20 = KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key20,  "Play Sound");
 		
-		KeyStroke key21 = KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key21 = KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key21,  "Reset Buttons");
 		
-		KeyStroke key22 = KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key22 = KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key22,  "Go To Location");
 		
-		KeyStroke key23 = KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key23 = KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key23,  "Clear All");
 		
-		KeyStroke key24 = KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key24 = KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key24,  "Clear Cell");
 		
-		KeyStroke key25 = KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key25 = KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key25,  "Set Pins");
 		
-		KeyStroke key26 = KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key26 = KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key26,  "Set Character");
 		
-		KeyStroke key27 = KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key27 = KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key27,  "Raise Pin");
 		
-		KeyStroke key28 = KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key28 = KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key28,  "Lower Pin");
 		
-		KeyStroke key29 = KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key29 = KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key29,  "Set Voice");
 		
-		KeyStroke key30 = KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.ALT_DOWN_MASK);
+		KeyStroke key30 = KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.ALT_DOWN_MASK);
 		newItemMap.put(key30,  "Location Tag");
-		
-		
-		
 				
-		counterMap.put("New Scenario", 0);
-		counterMap.put("New Item", 0);
-		counterMap.put("New Question", 0);
-		counterMap.put("Move Up", 0);
-		counterMap.put("Move Down", 0);
-		counterMap.put("Delete", 0);
-		counterMap.put("Edit", 0);
-		counterMap.put("Save", 0);
-		counterMap.put("Load", 0);
-		counterMap.put("Pause", 0);
-		counterMap.put("Text-to-speech", 0);
-		counterMap.put("Display on Braille Cell", 0);
-		counterMap.put("Repeat", 0);
-		counterMap.put("Button Repeat", 0);
-		counterMap.put("Button Location", 0);
-		counterMap.put("User Input", 0);
-		counterMap.put("Play Sound", 0);
-		counterMap.put("Record Audio",  0);
-		counterMap.put("Reset Buttons", 0);
-		counterMap.put("Go To Location", 0);
-		counterMap.put("Clear All", 0);
-		counterMap.put("Clear Cell", 0);
-		counterMap.put("Set Pins", 0);
-		counterMap.put("Set Character", 0);
-		counterMap.put("Raise Pin", 0);
-		counterMap.put("Lower Pin", 0);
-		counterMap.put("Set Voice", 0);
-		counterMap.put("Location Tag", 0);
-		counterMap.put("Test",  0);
-		
-		
+
+		resetCounter();
+
 		
 		if (functionCounter.exists())
 		{
@@ -397,7 +378,14 @@ public class GUI extends JFrame {
 			
 			if (sc.hasNext())
 			{
-			    loadCounter(functionCounter, sc);
+				try {
+					loadCounter(functionCounter, sc);
+				} catch (NumberFormatException e2) { 	// Catches differences between current CounterMap and existing functionCounter.txt
+					//e2.printStackTrace();
+					System.err.println("An error has occured in loading functionCounter into counterMap");
+					resetCounter();
+					this.upd(); 						// Resets functionCounter.txt after discrepancy
+				}
 			}
 		}
 		
@@ -426,7 +414,7 @@ public class GUI extends JFrame {
 	      } else if (newItemMap.containsKey(keyStroke) && rightPanel.btnNew.isEnabled())
 	      {
 	    	  String value = newItemMap.get(keyStroke);
-	    	  newItem.processAnswer(value);
+	    	  newItem.processAnswer(value, "add");
 	    	  logger.log(Level.INFO, "User has used the " + value + " hotkey.");
 	    	  return true;
 	      }
@@ -509,6 +497,7 @@ public class GUI extends JFrame {
 		counterMap.put("Move Down", 0);
 		counterMap.put("Delete", 0);
 		counterMap.put("Edit", 0);
+		counterMap.put("Insert Before", 0);
 		counterMap.put("Save", 0);
 		counterMap.put("Load", 0);
 		counterMap.put("Pause", 0);
@@ -539,7 +528,6 @@ public class GUI extends JFrame {
 	private void loadCounter(File file, Scanner sc)
 	{
 		
-		
 		for (String i : this.counterMap.keySet())
 		{
 			sc.findInLine(i);
@@ -550,7 +538,6 @@ public class GUI extends JFrame {
 			
 		}
 				
-		
 	}
 	
 }

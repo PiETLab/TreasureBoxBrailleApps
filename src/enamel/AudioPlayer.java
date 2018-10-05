@@ -163,12 +163,10 @@ public class AudioPlayer extends Player {
 	* @param sp
 	* 			the reference to the current ScenarioParser object          
 	*/
-    @Override
-	public void addSkipButtonListener(int index, String param, ScenarioParser sp) { 
+    public void addSkipButtonListener(int index, String param, ScenarioParser sp) { 
         
         KeyListener button = new KeyListener() {
-            @Override
-			public void keyPressed(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == (index + ONE)) {
                     if (sp.userInput) {
                         sp.skip(param);
@@ -212,8 +210,7 @@ public class AudioPlayer extends Player {
     @Override
     public void addRepeatButtonListener(int index, ScenarioParser sp) {
         KeyListener button = new KeyListener() {
-            @Override
-			public void keyPressed(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
                 if (e.getKeyChar() == index + '0') {
                     if (sp.userInput) {
                         repeat++;

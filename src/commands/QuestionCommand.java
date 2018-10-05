@@ -25,23 +25,6 @@ import authoring.QuestionWindow;
 		public String a ="";
 		private GUI gui;
 	
-	//	private GUI gui = new GUI();
-	
-	/*public QuestionCommand(String question,String introAudio, String introSound, String display, String wrongText, String incorrectAudio, String incorrectSound,  String rightText, String correctAudio, String correctSound, int correctButton, String button, GUI gui) {
-			this.question = question;
-			this.display = display;
-			this.introAudio= introAudio;
-			this.introSound= introSound;
-			this.incorrectAudio = incorrectAudio;
-			this.incorrectSound= incorrectSound;
-			this.correctAudio= correctAudio;
-			this.correctSound = correctSound;
-			this.wrongText = wrongText;
-			this.rightText= rightText;
-			this.correctButton= correctButton+1;
-			this.noButton= button;
-			this.gui= gui;
-		}*/
 		public QuestionCommand(QuestionWindow ques, GUI gui)
 		{
 			  
@@ -256,9 +239,9 @@ import authoring.QuestionWindow;
 			if(!(question.equals("none")) && question.length()>0)
 				questionCommands.set(1, new TTSCommand(question));			
 			else if(!(introAudio.equals("none")) && introAudio.length()>0)
-				questionCommands.set(1, new SoundCommand(introAudio));
+				questionCommands.set(1, new SoundCommand(introAudio, this.gui));
 			else if(!(introSound.equals("none")) && introSound.length()>0)
-				questionCommands.set(1, new SoundCommand(introSound));	
+				questionCommands.set(1, new SoundCommand(introSound, this.gui));	
 			
 			
 			if(display != this.display)
@@ -268,18 +251,18 @@ import authoring.QuestionWindow;
 			if(!(wrongText.equals("none")) && wrongText.length()>0)
 				questionCommands.set(8, new TTSCommand(wrongText));			
 			else if(!(incorrectAudio.equals("none")) && incorrectAudio.length()>0)
-				questionCommands.set(8, new SoundCommand(incorrectAudio));
+				questionCommands.set(8, new SoundCommand(incorrectAudio, this.gui));
 			else if(!(incorrectSound.equals("none")) && incorrectSound.length()>0)
-				questionCommands.set(8, new SoundCommand(incorrectSound));
+				questionCommands.set(8, new SoundCommand(incorrectSound, this.gui));
 			
 			
 
 			if(!(rightText.equals("none")) && rightText.length()>0)
 				questionCommands.set(11, new TTSCommand(rightText));			
 			else if(!(correctAudio.equals("none")) && correctAudio.length()>0)
-				questionCommands.set(11, new SoundCommand(correctAudio));
+				questionCommands.set(11, new SoundCommand(correctAudio, this.gui));
 			else if(!(correctSound.equals("none")) && correctSound.length()>0)
-				questionCommands.set(11, new SoundCommand(correctSound));
+				questionCommands.set(11, new SoundCommand(correctSound, this.gui));
 			
 			
 			for (PlayerCommand pc : questionCommands) {

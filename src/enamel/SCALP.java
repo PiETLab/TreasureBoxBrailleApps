@@ -61,7 +61,7 @@ import com.sun.speech.freetts.VoiceManager;
 public class SCALP {
     //FreeTTS voices
     VoiceManager vm = VoiceManager.getInstance();
-    Voice voice = vm.getVoice("kevin16"); 
+    Voice voice = vm.getVoice ("kevin16"); 
     
     JFrame frame;   
     
@@ -226,8 +226,7 @@ public class SCALP {
      */
     private  void keySelector() {
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
-			public void run() {
+            public void run() {
                 speakState();
                 frame.addKeyListener(new KeyListener() {
                     @Override
@@ -507,8 +506,7 @@ public class SCALP {
             frame.dispose();
         }
         new Thread(new Runnable() {
-            @Override
-			public void run() {
+            public void run() {
                 ScenarioParser s;
 				s = new ScenarioParser();
 				 voice.deallocate();

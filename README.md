@@ -1,7 +1,7 @@
 # Treasure Box Braille Apps
 
 This repository is dedicated to both **Authoring App** and **SCALP App**.
-  * **IMPORTANT**: Both projects use Java 8, and don't work with further versions
+  * **IMPORTANT**: Both projects use Java 8, and they don't work with further versions of java
 
   * **Authoring App**: This is a GUI application that enables the creation of `Scenario` files.
     * Scenarios are text files that together with some associated audio files will be executed by the Raspberry Pi.

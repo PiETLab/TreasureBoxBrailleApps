@@ -10,22 +10,22 @@
         <jar destfile="${dir.jarfile}/AuthoringApp.jar">
             <manifest>
                 <attribute name="Main-Class" value="common.EntryPoint"/>
-                <attribute name="Class-Path" value=". AuthoringApp_lib/assertj-core-3.6.2.jar AuthoringApp_lib/freetts.jar AuthoringApp_lib/en_us.jar AuthoringApp_lib/cmutimelex.jar AuthoringApp_lib/cmu_time_awb.jar AuthoringApp_lib/cmulex.jar AuthoringApp_lib/cmu_us_kal.jar AuthoringApp_lib/cmudict04.jar AuthoringApp_lib/commons-io-2.5.jar AuthoringApp_lib/freetts-jsapi10.jar AuthoringApp_lib/jsapi.jar AuthoringApp_lib/mbrola.jar AuthoringApp_lib/mbrola.jar AuthoringApp_lib/junit.jar AuthoringApp_lib/pi4j-core-javadoc.jar AuthoringApp_lib/pi4j-core-sources.jar AuthoringApp_lib/pi4j-core.jar AuthoringApp_lib/pi4j-device-javadoc.jar AuthoringApp_lib/pi4j-device-sources.jar AuthoringApp_lib/pi4j-device.jar AuthoringApp_lib/pi4j-example-javadoc.jar AuthoringApp_lib/pi4j-example-sources.jar AuthoringApp_lib/pi4j-example.jar AuthoringApp_lib/pi4j-gpio-extension-javadoc.jar AuthoringApp_lib/pi4j-gpio-extension-sources.jar AuthoringApp_lib/pi4j-gpio-extension.jar AuthoringApp_lib/pi4j-service-javadoc.jar AuthoringApp_lib/pi4j-service-sources.jar AuthoringApp_lib/pi4j-service.jar"/>
+                <attribute name="Class-Path" value=". AuthoringApp_lib/assertj-core-3.6.2.jar AuthoringApp_lib/cmu_time_awb.jar AuthoringApp_lib/cmu_us_kal.jar AuthoringApp_lib/cmudict04.jar AuthoringApp_lib/cmulex.jar AuthoringApp_lib/cmutimelex.jar AuthoringApp_lib/commons-io-2.5.jar AuthoringApp_lib/en_us.jar AuthoringApp_lib/freetts-jsapi10.jar AuthoringApp_lib/freetts.jar AuthoringApp_lib/jsapi.jar AuthoringApp_lib/mbrola.jar AuthoringApp_lib/mbrola.jar AuthoringApp_lib/junit.jar AuthoringApp_lib/pi4j-core-javadoc.jar AuthoringApp_lib/pi4j-core-sources.jar AuthoringApp_lib/pi4j-core.jar AuthoringApp_lib/pi4j-device-javadoc.jar AuthoringApp_lib/pi4j-device-sources.jar AuthoringApp_lib/pi4j-device.jar AuthoringApp_lib/pi4j-example-javadoc.jar AuthoringApp_lib/pi4j-example-sources.jar AuthoringApp_lib/pi4j-example.jar AuthoringApp_lib/pi4j-gpio-extension-javadoc.jar AuthoringApp_lib/pi4j-gpio-extension-sources.jar AuthoringApp_lib/pi4j-gpio-extension.jar AuthoringApp_lib/pi4j-service-javadoc.jar AuthoringApp_lib/pi4j-service-sources.jar AuthoringApp_lib/pi4j-service.jar"/>
             </manifest>
             <fileset dir="${dir.workspace}/TreasureBoxBrailleApps/bin"/>
         </jar>
         <delete dir="${dir.jarfile}/AuthoringApp_lib"/>
         <mkdir dir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/assertj-core-3.6.2.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
-        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/freetts.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
-        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/en_us.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
-        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmutimelex.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmu_time_awb.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
-        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmulex.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmu_us_kal.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmudict04.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmulex.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/cmutimelex.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/commons-io-2.5.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/en_us.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/freetts-jsapi10.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
+        <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/freetts.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/jsapi.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/lib/mbrola.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>
         <copy file="${dir.workspace}/TreasureBoxBrailleApps/mbrola/mbrola.jar" todir="${dir.jarfile}/AuthoringApp_lib"/>

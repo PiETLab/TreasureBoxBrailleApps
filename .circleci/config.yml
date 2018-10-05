@@ -26,21 +26,22 @@ jobs:
             sudo apt-get install ant -y
             sudo apt install zip unzip
             npm install -g github-release-cli
-            mkdir bin
+
+            ant -f build.xml
 
             CIRCLE_TAG=Release-$(date '+%Y-%m-%d-%H-%M-%S')
 
             AUTHORING_APP_RELEASE_FILE=AUTHORING-APP
-            ant -f buildScripts/AuthoringApp.xml
-            zip -r ${AUTHORING_APP_RELEASE_FILE}.zip ./Enamel
+            ant -f jarBuildScripts/AuthoringApp.xml
+            zip -r ${AUTHORING_APP_RELEASE_FILE}.zip ./Enamel/*
             rm -rf ./Enamel
 
             SCALP_RELEASE_FILE=SCALP
-            ant -f buildScripts/SCALP.xml
+            ant -f jarBuildScripts/SCALP.xml
             cp -R FactoryScenarios ./Enamel/FactoryScenarios
             cp -R mbrola/mbrola.jar ./Enamel/mbrola.jar
             mkdir ./Enamel/USBBuffer && mkdir ./Enamel/logs
-            zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel
+            zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel/*
             rm -rf ./Enamel
 
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip

@@ -18,7 +18,7 @@ jobs:
             sudo apt install zip unzip
             wget https://downloads.raspberrypi.org/raspbian_lite_latest
             echo $(ls)
-            unzip '*.zip'
+            unzip raspbian_lite_latest
             mv *.img raspbian.img
             sudo fdisk -l raspbian.img
 
@@ -71,7 +71,7 @@ workflows:
       - build-release:
           filters:
             branches:
-              only: develop 
+              only: develop
       - build-image:
           filters:
             branches:

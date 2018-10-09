@@ -4,7 +4,24 @@
 #
 version: 2
 jobs:
-  build:
+  build-image:
+    docker:
+      # specify the version you desire here
+      - image: circleci/buildpack-deps:bionic
+
+    working_directory: ~/TreasureBoxBrailleApps
+
+    steps:
+      - run:
+          name: "Create Raspberry Pi custom image"
+          command: |
+            sudo apt install zip unzip
+            wget https://downloads.raspberrypi.org/raspbian_lite_latest
+            unzip '*.zip'
+            mv *.img raspbian.img
+            sudo fdisk -l raspbian.img
+
+  build-release:
     docker:
       # specify the version you desire here
       - image: jimador/docker-jdk-8-maven-node
@@ -50,7 +67,11 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build:
+      - build-release:
+          filters:
+            branches:
+              only: master
+      - build-image:
           filters:
             branches:
               only: master

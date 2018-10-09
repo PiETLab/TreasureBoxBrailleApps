@@ -71,7 +71,7 @@ workflows:
       - build-release:
           filters:
             branches:
-              only: develop
+              only: develop 
       - build-image:
           filters:
             branches:

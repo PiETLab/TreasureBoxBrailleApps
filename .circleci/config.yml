@@ -17,6 +17,7 @@ jobs:
           command: |
             sudo apt install zip unzip
             wget https://downloads.raspberrypi.org/raspbian_lite_latest
+            echo $(ls)
             unzip '*.zip'
             mv *.img raspbian.img
             sudo fdisk -l raspbian.img

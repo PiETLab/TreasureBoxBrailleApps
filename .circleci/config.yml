@@ -14,10 +14,14 @@ jobs:
       - run:
           name: "Create a Raspberry Pi custom image with SCALP"
           command: |
+            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
             sudo add-apt-repository universe
             sudo apt-get update
             sudo apt install zip unzip
             sudo apt-get install jq
+            sudo apt-get install -y nodejs
+            
+            npm install -g github-release-cli
 
             # Base raspbian image with extra packages installed to run SCALP
             wget https://www.dropbox.com/s/1fsplxwzx71ufox/raspbian_small_backup.img?dl=0

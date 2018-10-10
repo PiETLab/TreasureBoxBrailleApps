@@ -30,9 +30,9 @@ jobs:
 
             echo $(ls)
             sudo rm -rf SCALPScripts
-            git clone https://github.com/PiETLab/SCALPScripts
-            mv SCALPScripts/SCALP.sh SCALPScripts/startSCALP.sh SCALPScripts/unmountDrive.sh SCALPScripts/changeconfig.sh SCALPScripts/config.txt .
-            mv SCALPScripts/enamel.desktop .config/autostart/
+            sudo git clone https://github.com/PiETLab/SCALPScripts
+            sudo mv SCALPScripts/SCALP.sh SCALPScripts/startSCALP.sh SCALPScripts/unmountDrive.sh SCALPScripts/changeconfig.sh SCALPScripts/config.txt .
+            sudo mv SCALPScripts/enamel.desktop .config/autostart/
             sudo mv SCALPScripts/enamel_usb_autostart.rules /mnt/image/root/etc/udev/rules.d/
             echo $(ls)
             cd /mnt/image/root/etc/udev/rules.d/

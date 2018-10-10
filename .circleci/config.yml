@@ -60,7 +60,7 @@ jobs:
 
             zip -r ${RASPBERRY_RELEASE_FILE}.zip ./raspbian.img
 
-            echo $(ls) 
+            echo $(ls -l) 
 
             github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.zip
 

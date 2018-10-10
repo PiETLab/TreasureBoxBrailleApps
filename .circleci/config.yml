@@ -5,9 +5,8 @@
 version: 2
 jobs:
   build-image:
-    docker:
-      # specify the version you desire here
-      - image: circleci/buildpack-deps:bionic
+    machine:
+      image: circleci/classic:latest
 
     working_directory: ~/TreasureBoxBrailleApps
 
@@ -26,6 +25,8 @@ jobs:
             #https://learnaddict.com/2016/02/23/modifying-a-raspberry-pi-raspbian-image-on-linux/
             sudo mount -v -o offset=4194304 -t vfat raspbian.img /mnt/image/boot
             sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
+
+
 
   build-release:
     docker:

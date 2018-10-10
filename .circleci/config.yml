@@ -14,6 +14,7 @@ jobs:
       - run:
           name: "Create a Raspberry Pi custom image with SCALP"
           command: |
+            now="$(date)"
             curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
             sudo add-apt-repository universe
             sudo apt-get update

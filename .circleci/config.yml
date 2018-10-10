@@ -119,7 +119,7 @@ workflows:
             branches:
               only: master
       - build-raspbian-image:
-          requires:
+          requires: 
             - build-apps
           filters:
             branches:

@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build-image:
+  build-raspbian-image:
     machine:
       image: circleci/classic:latest
 
@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - run:
-          name: "Create Raspberry Pi custom image"
+          name: "Create a Raspberry Pi custom image with SCALP"
           command: |
             sudo apt install zip unzip
             wget https://www.dropbox.com/s/1fsplxwzx71ufox/raspbian_small_backup.img?dl=0
@@ -29,7 +29,7 @@ jobs:
             cd /mnt/image/root/home/pi/
 
             echo $(ls)
-            rm -rf SCALPScripts
+            sudo rm -rf SCALPScripts
             git clone https://github.com/PiETLab/SCALPScripts
             mv SCALPScripts/SCALP.sh SCALPScripts/startSCALP.sh SCALPScripts/unmountDrive.sh SCALPScripts/changeconfig.sh SCALPScripts/config.txt .
             mv SCALPScripts/enamel.desktop .config/autostart/
@@ -42,7 +42,7 @@ jobs:
 
 
 
-  build-release:
+  build-apps:
     docker:
       # specify the version you desire here
       - image: jimador/docker-jdk-8-maven-node
@@ -86,15 +86,15 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  build:
     jobs:
-      - build-release:
+      - build-apps:
           filters:
             branches:
               only: master
-      - build-image:
+      - build-raspbian-image:
           #requires:
-          #  - build-release
+          #  - build-apps
           filters:
             branches:
               only: master

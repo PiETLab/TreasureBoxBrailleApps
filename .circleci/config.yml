@@ -27,7 +27,18 @@ jobs:
             sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
 
             cd /mnt/image/root/home/pi/
+
             echo $(ls)
+            rm -rf SCALPScripts
+            git clone https://github.com/PiETLab/SCALPScripts
+            mv SCALPScripts/SCALP.sh SCALPScripts/startSCALP.sh SCALPScripts/unmountDrive.sh SCALPScripts/changeconfig.sh SCALPScripts/config.txt .
+            mv SCALPScripts/enamel.desktop .config/autostart/
+            sudo mv SCALPScripts/enamel_usb_autostart.rules /mnt/image/root/etc/udev/rules.d/
+            echo $(ls)
+            cd /mnt/image/root/etc/udev/rules.d/
+            echo $(ls)
+
+
 
 
 

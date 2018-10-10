@@ -20,6 +20,13 @@ jobs:
             mv raspbian_small_backup.img?dl=0 raspbian.img
             sudo fdisk -l raspbian.img
 
+            sudo mkdir -p /mnt/image/boot
+            sudo mkdir -p /mnt/image/root
+
+            #https://learnaddict.com/2016/02/23/modifying-a-raspberry-pi-raspbian-image-on-linux/
+            sudo mount -v -o offset=4194304 -t vfat raspbian.img /mnt/image/boot
+            sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
+
   build-release:
     docker:
       # specify the version you desire here

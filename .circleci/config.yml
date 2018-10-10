@@ -71,8 +71,8 @@ workflows:
             branches:
               only: master
       - build-image:
-          requires:
-            - build-release
+          #requires:
+          #  - build-release
           filters:
             branches:
               only: master

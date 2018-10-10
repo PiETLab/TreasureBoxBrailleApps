@@ -64,7 +64,7 @@ jobs:
 
             echo $(ls -l)
 
-            github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.zip ${RASPBERRY_RELEASE_FILE}.z01
+            github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.z*
 
 
   build-apps:

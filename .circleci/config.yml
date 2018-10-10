@@ -58,11 +58,13 @@ jobs:
             CIRCLE_PROJECT_REPONAME=SCALPScripts
             RASPBERRY_RELEASE_FILE=RASPBERRY-RELEASE-IMAGE
 
-            zip -r ${RASPBERRY_RELEASE_FILE}.zip ./raspbian.img
+            zip -r raspbian.zip ./raspbian.img
+            # The image has a total size of 3GB, so we will split it in 2 files (Github has a 2GB limitation per file)
+            zip raspbian.zip --out ${RASPBERRY_RELEASE_FILE}.zip -s 1500m
 
-            echo $(ls -l) 
+            echo $(ls -l)
 
-            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.zip
+            github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.zip ${RASPBERRY_RELEASE_FILE}.z01
 
 
   build-apps:
@@ -106,7 +108,7 @@ jobs:
             zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel/*
             rm -rf ./Enamel
 
-            # github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
+            # github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
 
 workflows:
   version: 2

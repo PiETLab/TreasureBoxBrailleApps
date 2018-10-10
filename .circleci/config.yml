@@ -16,7 +16,7 @@ jobs:
           name: "Create Raspberry Pi custom image"
           command: |
             sudo apt install zip unzip
-            wget https://downloads.raspberrypi.org/raspbian_lite_latest
+            wget https://www.dropbox.com/s/1fsplxwzx71ufox/raspbian_small_backup.img?dl=0
             echo $(ls)
             unzip raspbian_lite_latest
             mv *.img raspbian.img
@@ -73,6 +73,8 @@ workflows:
             branches:
               only: develop
       - build-image:
+          requires:
+            - build-release
           filters:
             branches:
               only: master

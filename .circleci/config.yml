@@ -15,8 +15,8 @@ jobs:
           name: "Create a Raspberry Pi custom image with SCALP"
           command: |
             sudo add-apt-repository universe
-            sudo apt install zip unzip
             sudo apt-get update
+            sudo apt install zip unzip
             sudo apt-get install jq
 
             # Base raspbian image with extra packages installed to run SCALP
@@ -45,6 +45,8 @@ jobs:
             sudo wget $(curl -s https://api.github.com/repos/PiETLab/TreasureBoxBrailleApps/releases/latest | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
             sudo unzip SCALP.zip
             sudo rm -rf SCALP.zip
+
+            cd ~/
 
             sudo umount /mnt/image/boot
             sudo umount /mnt/image/root

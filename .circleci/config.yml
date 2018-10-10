@@ -16,6 +16,7 @@ jobs:
           command: |
             sudo add-apt-repository universe
             sudo apt install zip unzip
+            sudo apt-get update
             sudo apt-get install jq
 
             # Base raspbian image with extra packages installed to run SCALP

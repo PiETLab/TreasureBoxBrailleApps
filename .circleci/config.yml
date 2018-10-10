@@ -62,8 +62,6 @@ jobs:
             # The image has a total size of 3GB, so we will split it in 2 files (Github has a 2GB limitation per file)
             zip raspbian.zip --out ${RASPBERRY_RELEASE_FILE}.zip -s 1500m
 
-            echo $(ls -l)
-
             github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.z*
 
 

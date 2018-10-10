@@ -42,8 +42,8 @@ jobs:
             sudo mv SCALPScripts/enamel_usb_autostart.rules /mnt/image/root/etc/udev/rules.d/
 
             spruce_type=SCALP
-            wget $(curl -s https://api.github.com/repos/PiETLab/TreasureBoxBrailleApps/releases/latest | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
-            unzip SCALP.zip && rm -rf SCALP.zip
+            sudo wget $(curl -s https://api.github.com/repos/PiETLab/TreasureBoxBrailleApps/releases/latest | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
+            sudo unzip SCALP.zip && rm -rf SCALP.zip
 
             sudo umount /mnt/image/boot
             sudo umount /mnt/image/root

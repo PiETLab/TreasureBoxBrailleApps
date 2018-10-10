@@ -47,7 +47,7 @@ jobs:
 
             sudo touch NEWFILE
 
-            cd ~/
+            cd ~/TreasureBoxBrailleApps
 
             sudo umount /mnt/image/boot
             sudo umount /mnt/image/root

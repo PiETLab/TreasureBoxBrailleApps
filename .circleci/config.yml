@@ -26,6 +26,9 @@ jobs:
             sudo mount -v -o offset=4194304 -t vfat raspbian.img /mnt/image/boot
             sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
 
+            cd /mnt/image/root/home/pi/
+            echo $(ls)
+
 
 
   build-release:

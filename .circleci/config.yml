@@ -37,12 +37,12 @@ jobs:
 
             cd /mnt/image/root/home/pi/
 
-            sudo rm -rf SCALPScripts
+            sudo rm -rf TreasureBoxBrailleSetup
             sudo rm -rf Enamel
-            sudo git clone https://github.com/PiETLab/SCALPScripts
-            sudo mv SCALPScripts/SCALP.sh SCALPScripts/startSCALP.sh SCALPScripts/unmountDrive.sh SCALPScripts/changeconfig.sh SCALPScripts/config.txt .
-            sudo mv SCALPScripts/enamel.desktop .config/autostart/
-            sudo mv SCALPScripts/enamel_usb_autostart.rules /mnt/image/root/etc/udev/rules.d/
+            sudo git clone https://github.com/PiETLab/TreasureBoxBrailleSetup
+            sudo mv TreasureBoxBrailleSetup/SCALP.sh TreasureBoxBrailleSetup/startSCALP.sh TreasureBoxBrailleSetup/unmountDrive.sh TreasureBoxBrailleSetup/changeconfig.sh TreasureBoxBrailleSetup/config.txt .
+            sudo mv TreasureBoxBrailleSetup/enamel.desktop .config/autostart/
+            sudo mv TreasureBoxBrailleSetup/enamel_usb_autostart.rules /mnt/image/root/etc/udev/rules.d/
 
             spruce_type=SCALP
             sudo wget $(curl -s https://api.github.com/repos/PiETLab/TreasureBoxBrailleApps/releases/latest | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
@@ -55,7 +55,7 @@ jobs:
             sudo umount /mnt/image/root
 
             CIRCLE_TAG=Release-$(date '+%Y-%m-%d-%H-%M-%S')
-            CIRCLE_PROJECT_REPONAME=SCALPScripts
+            CIRCLE_PROJECT_REPONAME=TreasureBoxBrailleSetup
             RASPBERRY_RELEASE_FILE=RASPBERRY-RELEASE-IMAGE
 
             zip -r raspbian.zip ./raspbian.img
@@ -119,7 +119,7 @@ workflows:
             branches:
               only: master
       - build-raspbian-image:
-          requires: 
+          requires:
             - build-apps
           filters:
             branches:

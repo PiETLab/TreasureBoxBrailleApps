@@ -11,7 +11,7 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 
   * **SCALP**: This app is responsible for running the `Scenario` files inside the Raspberry Pi (also the Desktop for debugging).
     * `SCALP` means Select-(as per)-Config-and-Launch-Player
-    * `SCALP` contains a separate repository called [`SCALP Scripts`](https://github.com/PiETLab/SCALPScripts) which has a complete tutorial on how to set up a Raspberry Pi with the `SCALP` app. On that note, the repository contains a series of `shell script` programs that automatically feed the `Scenario` files into the `SCALP App`
+    * `SCALP` contains a separate repository called [`Treasure Box Braille Setup`](https://github.com/PiETLab/TreasureBoxBrailleSetup) which has a complete tutorial on how to set up a Raspberry Pi with the `SCALP` app. On that note, the repository contains a series of `shell script` programs that automatically feed the `Scenario` files into the `SCALP App`
 
 ## How to run both apps in development mode
 

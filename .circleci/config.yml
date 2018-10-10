@@ -15,6 +15,9 @@ jobs:
           name: "Create a Raspberry Pi custom image with SCALP"
           command: |
             sudo apt install zip unzip
+            sudo apt-get install jq
+
+            # Base raspbian image with extra packages installed to run SCALP
             wget https://www.dropbox.com/s/1fsplxwzx71ufox/raspbian_small_backup.img?dl=0
             mv raspbian_small_backup.img?dl=0 raspbian.img
             sudo fdisk -l raspbian.img
@@ -22,7 +25,7 @@ jobs:
             sudo mkdir -p /mnt/image/boot
             sudo mkdir -p /mnt/image/root
 
-            #https://learnaddict.com/2016/02/23/modifying-a-raspberry-pi-raspbian-image-on-linux/
+            # https://learnaddict.com/2016/02/23/modifying-a-raspberry-pi-raspbian-image-on-linux/
             sudo mount -v -o offset=4194304 -t vfat raspbian.img /mnt/image/boot
             sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
 
@@ -30,17 +33,18 @@ jobs:
 
             echo $(ls)
             sudo rm -rf SCALPScripts
+            sudo rm -rf Enamel
             sudo git clone https://github.com/PiETLab/SCALPScripts
             sudo mv SCALPScripts/SCALP.sh SCALPScripts/startSCALP.sh SCALPScripts/unmountDrive.sh SCALPScripts/changeconfig.sh SCALPScripts/config.txt .
             sudo mv SCALPScripts/enamel.desktop .config/autostart/
             sudo mv SCALPScripts/enamel_usb_autostart.rules /mnt/image/root/etc/udev/rules.d/
-            echo $(ls)
-            cd /mnt/image/root/etc/udev/rules.d/
-            echo $(ls)
 
+            spruce_type=SCALP
+            wget $(curl -s https://api.github.com/repos/PiETLab/TreasureBoxBrailleApps/releases/latest | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
+            unzip SCALP.zip && rm -rf SCALP.zip
 
-
-
+            sudo umount /mnt/image/boot
+            sudo umount /mnt/image/root
 
   build-apps:
     docker:

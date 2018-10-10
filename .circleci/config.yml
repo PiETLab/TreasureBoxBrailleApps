@@ -108,7 +108,7 @@ jobs:
             zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel/*
             rm -rf ./Enamel
 
-            # github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
+            github-release upload --token ${GITHUB_TOKEN} --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
 
 workflows:
   version: 2
@@ -119,8 +119,8 @@ workflows:
             branches:
               only: master
       - build-raspbian-image:
-          #requires:
-          #  - build-apps
+          requires:
+            - build-apps
           filters:
             branches:
               only: master

@@ -43,7 +43,8 @@ jobs:
 
             spruce_type=SCALP
             sudo wget $(curl -s https://api.github.com/repos/PiETLab/TreasureBoxBrailleApps/releases/latest | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url")
-            sudo unzip SCALP.zip && rm -rf SCALP.zip
+            sudo unzip SCALP.zip
+            sudo rm -rf SCALP.zip
 
             sudo umount /mnt/image/boot
             sudo umount /mnt/image/root

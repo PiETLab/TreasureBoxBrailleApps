@@ -14,6 +14,7 @@ jobs:
       - run:
           name: "Create a Raspberry Pi custom image with SCALP"
           command: |
+            sudo add-apt-repository universe
             sudo apt install zip unzip
             sudo apt-get install jq
 

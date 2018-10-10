@@ -17,9 +17,7 @@ jobs:
           command: |
             sudo apt install zip unzip
             wget https://www.dropbox.com/s/1fsplxwzx71ufox/raspbian_small_backup.img?dl=0
-            echo $(ls)
-            unzip raspbian_lite_latest
-            mv *.img raspbian.img
+            mv raspbian_small_backup.img?dl=0 raspbian.img
             sudo fdisk -l raspbian.img
 
   build-release:

@@ -62,7 +62,7 @@ jobs:
             zip -r ${SCALP_RELEASE_FILE}.zip ./Enamel/*
             rm -rf ./Enamel
 
-            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
+            # github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${SCALP_RELEASE_FILE}.zip ${AUTHORING_APP_RELEASE_FILE}.zip
 
 workflows:
   version: 2
@@ -71,7 +71,7 @@ workflows:
       - build-release:
           filters:
             branches:
-              only: develop
+              only: master
       - build-image:
           requires:
             - build-release

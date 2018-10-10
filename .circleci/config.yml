@@ -33,7 +33,6 @@ jobs:
 
             cd /mnt/image/root/home/pi/
 
-            echo $(ls)
             sudo rm -rf SCALPScripts
             sudo rm -rf Enamel
             sudo git clone https://github.com/PiETLab/SCALPScripts
@@ -46,10 +45,23 @@ jobs:
             sudo unzip SCALP.zip
             sudo rm -rf SCALP.zip
 
+            sudo touch NEWFILE
+
             cd ~/
 
             sudo umount /mnt/image/boot
             sudo umount /mnt/image/root
+
+
+
+
+            sudo mount -v -o offset=4194304 -t vfat raspbian.img /mnt/image/boot
+            sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
+
+            cd /mnt/image/root/home/pi/
+
+            echo $(ls)
+
 
   build-apps:
     docker:

@@ -8,7 +8,7 @@ jobs:
     machine:
       image: circleci/classic:latest
 
-    working_directory: ~/TreasureBoxBrailleApps
+    working_directory: ~/
 
     steps:
       - run:
@@ -45,22 +45,18 @@ jobs:
             sudo unzip SCALP.zip
             sudo rm -rf SCALP.zip
 
-            sudo touch NEWFILE
-
-            cd ~/TreasureBoxBrailleApps
+            cd ~/
 
             sudo umount /mnt/image/boot
             sudo umount /mnt/image/root
 
+            CIRCLE_TAG=Release-$(date '+%Y-%m-%d-%H-%M-%S')
+            CIRCLE_PROJECT_REPONAME=SCALPScripts
+            RASPBERRY_RELEASE_FILE=RASPBERRY-RELEASE-IMAGE
 
+            zip -r ${RASPBERRY_RELEASE_FILE}.zip ./raspbian.img
 
-
-            sudo mount -v -o offset=4194304 -t vfat raspbian.img /mnt/image/boot
-            sudo mount -v -o offset=50331648 -t ext4 raspbian.img /mnt/image/root
-
-            cd /mnt/image/root/home/pi/
-
-            echo $(ls)
+            github-release upload --owner ${CIRCLE_PROJECT_USERNAME} --repo ${CIRCLE_PROJECT_REPONAME} --tag ${CIRCLE_TAG} --name ${CIRCLE_TAG} --body "Release date: ${now}" ${RASPBERRY_RELEASE_FILE}.zip
 
 
   build-apps:
@@ -89,6 +85,7 @@ jobs:
             ant -f build.xml
 
             CIRCLE_TAG=Release-$(date '+%Y-%m-%d-%H-%M-%S')
+            CIRCLE_PROJECT_REPONAME=TreasureBoxBrailleApps
 
             AUTHORING_APP_RELEASE_FILE=AUTHORING-APP
             ant -f jarBuildScripts/AuthoringApp.xml

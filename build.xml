@@ -5,6 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="TreasureBoxBrailleApps">
     <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -39,6 +40,9 @@
         <pathelement location="pi4jWindows/pi4j-service-javadoc.jar"/>
         <pathelement location="pi4jWindows/pi4j-service-sources.jar"/>
         <pathelement location="pi4jWindows/pi4j-service.jar"/>
+        <pathelement location="lib/junit4-runner.jar"/>
+        <pathelement location="lib/hamcrest-junit-2.0.0.0.jar"/>
+        <pathelement location="lib/java-hamcrest-2.0.0.0.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -84,5 +88,57 @@
         <java classname="common.EntryPoint" failonerror="true" fork="yes">
             <classpath refid="TreasureBoxBrailleApps.classpath"/>
         </java>
+    </target>
+    <target name="EntryPointTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="common.EntryPointTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="TreasureBoxBrailleApps.classpath"/>
+        </junit>
+    </target>
+    <target name="junit4-runner.jar">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="TreasureBoxBrailleApps.classpath"/>
+        </junit>
+    </target>
+    <target name="EntryPointTest.test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="common.EntryPointTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="TreasureBoxBrailleApps.classpath"/>
+        </junit>
+    </target>
+    <target name="EntryPointTest.main">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="common.EntryPointTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="TreasureBoxBrailleApps.classpath"/>
+        </junit>
+    </target>
+    <target name="SCALPTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="enamel.SCALPTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="TreasureBoxBrailleApps.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>

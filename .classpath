@@ -35,5 +35,8 @@
 	<classpathentry exported="true" kind="lib" path="pi4jWindows/pi4j-service-javadoc.jar"/>
 	<classpathentry exported="true" kind="lib" path="pi4jWindows/pi4j-service-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="pi4jWindows/pi4j-service.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/junit4-runner.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hamcrest-junit-2.0.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/java-hamcrest-2.0.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

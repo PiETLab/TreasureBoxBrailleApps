@@ -40,10 +40,10 @@ import com.sun.speech.freetts.VoiceManager;
  * <p>
  * The <code>String state</code> field controls all the logic of the program. Depending on
  * the current state, a button press will do specific things. For example, if the 
- * state is currently "highLevelSelector", pressing button 1 will select USB Buffer Directory,
- * and change the state to "fileSelector". Then, pressing button 1 will cycle through the files
+ * state is currently "highLevelSelector", pressing square will select USB Buffer Directory,
+ * and change the state to "fileSelector". Then, pressing square will cycle through the files
  * within the USB Buffer Directory. This allows for three methods that handle the logic behind
- * the 3 buttons, <code>buttonOne()</code>, <code>buttonTwo()</code>, and <code>buttonThree()</code>,
+ * the 3 buttons, <code>buttonCircle()</code>, <code>buttonSquare()</code>, and <code>buttonThree()</code>,
  * and any new method of button input can simply call these three methods. For example, 
  * <code>keySelector()</code> and <code>hardwareSelector()</code> contain the exact same method calls,
  * but of course different code to listen to events (KeyListener vs. GPIO interrupt). This 
@@ -218,8 +218,8 @@ public class SCALP {
     /**
      * This method adds a KeyListener to the dummy frame, and
      * this KeyListener responds to the number row's "1", "2", and "3" keys.
-     * The functions of the keyPressed event have been delegated to <code>buttonOne()</code>,
-     * <code>buttonTwo()</code>, and <code>buttonThree()</code> methods, as well as <code>speakState()</code>.
+     * The functions of the keyPressed event have been delegated to <code>buttonCircle()</code>,
+     * <code>buttonSquare()</code>, and <code>buttonThree()</code> methods, as well as <code>speakState()</code>.
      * This was done so that the code for what happens when a particular button is pressed at a particular time
      * can be reused for any type of input, whether it be a KeyListener, a JButton ActionListener, or
      * the GPIO hardware buttons.
@@ -233,11 +233,11 @@ public class SCALP {
                     public void keyPressed(KeyEvent e) {
                         switch (e.getKeyCode()){
                         case KeyEvent.VK_1 :
-                            buttonOne();
+                            buttonCircle();
                             speakState();
                             break;
                         case KeyEvent.VK_2 :
-                            buttonTwo();
+                            buttonSquare();
                             speakState();
                             break;
                         case KeyEvent.VK_3 :
@@ -257,8 +257,8 @@ public class SCALP {
     
     /**
      * This method creates an ISR, which listens for interrupts on the specified GPIO pin.
-     * The functions of the callback event have been delegated to <code>buttonOne()</code>,
-     * <code>buttonTwo()</code>, and <code>buttonThree()</code> methods, as well as <code>speakState()</code>.
+     * The functions of the callback event have been delegated to <code>buttonCircle()</code>,
+     * <code>buttonSquare()</code>, and <code>buttonThree()</code> methods, as well as <code>speakState()</code>.
      * This was done so that the code for what happens when a particular button is pressed at a particular time
      * can be reused for any type of input, whether it be a KeyListener, a JButton ActionListener, or
      * the GPIO hardware buttons.
@@ -272,7 +272,7 @@ public class SCALP {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent arg0) {
                 if (arg0.getState() == PinState.HIGH) {
-                    buttonOne();
+                    buttonCircle();
                     speakState();
                 }
             }   
@@ -281,7 +281,7 @@ public class SCALP {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent arg0) {
                 if (arg0.getState() == PinState.HIGH) {
-                    buttonTwo();
+                    buttonSquare();
                     speakState();
                 }
             }   
@@ -311,7 +311,7 @@ public class SCALP {
         if (speakInstructions) {
             index = 0;
             if (state.equals("highLevelSelector")) {
-                speak("You are in high level selector. button 1 for U S B Buffer Directory, button 2 for factory directory, or button 3 for Settings.");
+                speak("You are in high level selector. square for U S B Buffer Directory, circle for factory directory, or button 3 for Settings.");
             }
             
             else if (state.equals("fileSelector")) {
@@ -323,13 +323,13 @@ public class SCALP {
                 else {
                    speakDirectory = currentDirectory.getName();
                 }
-                speak("You are in " + speakDirectory + " directory.  button 1 for next file, button 2 to select current file, or button 3 for settings.");
+                speak("You are in " + speakDirectory + " directory.  square for next file, circle to select current file, or button 3 for settings.");
                 speak(currentDirectoryFiles[index] + " currently selected");
                 System.out.println(currentDirectoryFiles[index] + " currently selected");
             }
             
             else if (state.equals("settingsSelector")) {
-                speak("You are in Settings. button 1 to cycle through configs, button 2 to select config, button 3 for previous menu.");
+                speak("You are in Settings. square to cycle through configs, circle to select config, button 3 for previous menu.");
                 speak(sConfigParameters[index] + " currently selected.");
                 System.out.println(sConfigParameters[index] + " currently selected.");
 
@@ -342,10 +342,10 @@ public class SCALP {
                 else {
                     toggleRange = new String[]{"true", "false"};
                 }
-                speak("Button 1 to toggle, button 2 to accept and return, button 3 to exit without saving. Any changes will take effect after a restart.");
+                speak("square to toggle, circle to accept and return, button 3 to exit without saving. Any changes will take effect after a restart.");
             }
             else if (state.equals("confirmStartPlayer")) {
-                speak("The file " + currentFile + " is loaded. Press button 1 to start, or button 3 for settings.");
+                speak("The file " + currentFile + " is loaded. Press square to start, or button 3 for settings.");
             }
         }
     }
@@ -364,7 +364,7 @@ public class SCALP {
      *                  the user still has a chance to enter settings even with the START_USB_WITH_FILE_1 selected; allows
      *                  the user to confirm before starting the file. 
      */
-    private void buttonOne() {
+    private void buttonCircle() {
         speakInstructions = false;
         if (state.equals("highLevelSelector")) {
             speakInstructions = true;
@@ -415,16 +415,16 @@ public class SCALP {
      * For the states, the behaviour is as follows:
      * highLevelSelector - Selects the factory directory by setting currentDirectory and currentDirectoryFiles
      *                      to factoryDirectory and factoryDirectoryFiles. Changes state to fileSelector.
-     * fileSelector - Starts the currently selected file from currentDirectoryFiles; selection takes place using button 1.
+     * fileSelector - Starts the currently selected file from currentDirectoryFiles; selection takes place using square.
      * settingsSelector - Selects the currently selected settings parameter by setting <code>config</code> 
      *                      to the current sConfigParameters[index]. Changes state to configSelector.
      * configSelector - Creates a new ProcessBuilder that starts the shell script "changeconfig.sh", which will change
      *                  "config.txt". Note, currently it is a hard-coded directory, and since it is a shell script, this
      *                  will not work with Windows systems. Meant to be used only on a properly set up Rasberry Pi. 
      *                  Speaks the change, and sets the state to settingsSelector.
-     * confirmStartPlayer - Not present; button 2 does not have any effect in the state confirmStartPlayer.
+     * confirmStartPlayer - Not present; circle does not have any effect in the state confirmStartPlayer.
      */
-    private void buttonTwo() {
+    private void buttonSquare() {
         speakInstructions = true;
         if (state.equals("highLevelSelector")) {
             System.out.println("Factory directory selected");

@@ -96,3 +96,8 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 
 * To generate a more recent API documentation click on `Project -> Generate Javadoc`
   * ![generate_docs](./READMEImages/generate_docs.png)
+
+
+## How to contribute
+
+* Click [here](https://github.com/PiETLab/TreasureBoxBrailleApps/tree/develop/pullRequestTutorial) for complete instructions

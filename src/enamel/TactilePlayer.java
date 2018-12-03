@@ -69,8 +69,6 @@ public class TactilePlayer extends Player {
     public TactilePlayer(int brailleCellNumber, int buttonNumber) throws SecurityException, IOException {
 
         super(brailleCellNumber, buttonNumber);
-        if (brailleCellNumber > 1 || buttonNumber > 4)
-            throw new IllegalArgumentException("The current system for TactilePlayer does not support more than 1 braille cell or more than 4 buttons");
         try {
             GpioController gpio = GpioFactory.getInstance();
             ON = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "ON", PinState.LOW);

@@ -125,7 +125,7 @@ public class TactilePlayer extends Player {
     public void refresh() {
         try {
             STROBE.low();
-            for (int i = 0; i < brailleList.size(); i++) {
+            for (int i = brailleList.size() - 1; i >= 0; i--) {
                 for (int j = brailleList.get(i).getNumberOfPins() - 1; j >= 0; j--) {
                     CLOCK.low();
                     if (brailleList.get(i).getPinState(j) == true) {

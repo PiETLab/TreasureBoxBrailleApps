@@ -53,7 +53,7 @@ public class BrailleCell {
 	private void initializeAlphabet() {
 		alphabet.put('a', "10000000");
 		alphabet.put('b', "11000000");
-		alphabet.put('c', "10100000");
+		alphabet.put('c', "10010000");
 		alphabet.put('d', "10011000");
 		alphabet.put('e', "10001000");
 		alphabet.put('f', "11010000");

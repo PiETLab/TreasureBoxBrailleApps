@@ -47,6 +47,7 @@ import listeners.NewButtonListener;
  */
 public class GUI extends JFrame {
 	private static final long serialVersionUID = -1291725446662111704L;
+	private static final int fileSizeLimit = 1024000; //1MB file size limit for log file
 	private transient ThreadRunnable audioThread;
 	private LeftPanel leftPanel;
 	private RightPanel rightPanel;
@@ -59,6 +60,7 @@ public class GUI extends JFrame {
 	public Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	public File loadedFile = null;
+	
 	
 	//This file keeps track of how many times each function was used, the counter persists through different instances of the JVM.
 	public File functionCounter = new File(
@@ -84,7 +86,7 @@ public class GUI extends JFrame {
 		try {
 			Path path = Paths.get(System.getProperty("user.dir") + File.separator + "logs");
 			if(!Files.exists(path)) Files.createDirectory(path);
-			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userActions.log.txt", 0, 1, true);
+			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userActions.log.txt", fileSizeLimit, 1, true);
 //		} catch (SecurityException e) {
 //			e.printStackTrace();
 //			System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: SecurityException.");

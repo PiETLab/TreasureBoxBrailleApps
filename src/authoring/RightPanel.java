@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -153,15 +154,20 @@ public class  RightPanel extends JPanel implements ActionListener {
 		} else if (e.getSource() == btnMoveUp) {
 			gui.getLeftPanel().moveUp();
 			gui.counterMap.put("Move Up", gui.counterMap.get("Move Up") + 1);
+			gui.logger.log(Level.INFO, "User has clicked Move Item Up button.");
 		} else if (e.getSource() == btnMoveDown) {
 			gui.getLeftPanel().moveDown();
 			gui.counterMap.put("Move Down", gui.counterMap.get("Move Down") + 1);
+			gui.logger.log(Level.INFO, "User has clicked Move Item Down button.");
 		} else if (e.getSource() == btnDelete) {
 			gui.getLeftPanel().deleteItem();
 			gui.counterMap.put("Delete", gui.counterMap.get("Delete") + 1);
+			gui.logger.log(Level.INFO, "User has clicked Delete Item button.");
 		} else if (e.getSource() == btnEdit) {
 			gui.getLeftPanel().EditItem();
-			gui.counterMap.put("Edit", gui.counterMap.get("Edit") + 1);}
+			gui.counterMap.put("Edit", gui.counterMap.get("Edit") + 1);
+			gui.logger.log(Level.INFO, "User has clicked Edit Item button.");
+		}
 		else if (e.getSource() == btnInsert) {
 			gui.getLeftPanel().InsertItemBefore();
 			gui.counterMap.put("Insert Before", gui.counterMap.get("Insert Before") + 1);

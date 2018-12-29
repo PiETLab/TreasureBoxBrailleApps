@@ -84,7 +84,7 @@ public class GUI extends JFrame {
 		try {
 			Path path = Paths.get(System.getProperty("user.dir") + File.separator + "logs");
 			if(!Files.exists(path)) Files.createDirectory(path);
-			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userActions.log.txt", 0, 1);
+			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userActions.log.txt", 0, 1, true);
 //		} catch (SecurityException e) {
 //			e.printStackTrace();
 //			System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: SecurityException.");

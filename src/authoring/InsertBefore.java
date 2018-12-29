@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ public class InsertBefore {
 	
 	public InsertBefore(GUI gui)
 	{
+	gui.logger.log(Level.INFO, "User has clicked Insert Before button.");
 	
 	// Show the Add Item dialog
 	JPanel panel = new JPanel();

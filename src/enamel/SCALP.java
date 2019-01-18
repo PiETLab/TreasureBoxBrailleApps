@@ -4,6 +4,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.FileHandler;
+import java.util.logging.Formatter;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -107,12 +118,37 @@ public class SCALP {
     GpioPinDigitalInput[] buttonList;
     GpioController gpio;
     
+    //Logger for logging user Scenarios
+    public Logger logger = Logger.getLogger(this.getClass().getName());
+	private static final int fileSizeLimit = 1024000; //1MB file size limit for log file
+    
     public static void main(String[] args) {
 
         //Create instance of this class and allocate the voice.
         SCALP main = new SCALP();
         main.voice.setRate(150f);
         main.voice.allocate();
+        
+        //File Handler for logging scenarios chosen
+        FileHandler fileHandler = null; 
+		try {
+			Path path = Paths.get(System.getProperty("user.dir") + File.separator + "logs");
+			if(!Files.exists(path)) Files.createDirectory(path);
+			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userScenarios.log.txt", fileSizeLimit, 1, true);
+		} catch (IOException e) {
+			e.printStackTrace();
+	         System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: IOException.");
+		}
+        fileHandler.setFormatter(new Formatter() {
+    		private String format = "[%1$s] [%2$s] %3$s %n";
+			private SimpleDateFormat dateWithMillis = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
+			@Override
+			public String format(LogRecord record) {
+				return String.format(format, dateWithMillis.format(new Date()), record.getSourceClassName(), formatMessage(record));
+			}
+    	});
+    	main.logger.addHandler(fileHandler);
+    	main.logger.setUseParentHandlers(false);
         
         //Ensure the arguments are not empty. 
         if (args.length == 0) {
@@ -167,8 +203,8 @@ public class SCALP {
                 
                 main.currentFile = args[1];
                 
-                if (main.hardwareAvailable) {
-                    main.hardwareSelector();
+                if (main.hardwareAvailable) {               	
+                		main.hardwareSelector();              
                 }
                 else {
                     main.keySelector();
@@ -182,7 +218,7 @@ public class SCALP {
                 main.currentDirectoryFiles = main.currentDirectory.list(scenariosOnly);
             
                 if (main.hardwareAvailable) {
-                    main.hardwareSelector();
+                		main.hardwareSelector();
                 }
                 else {
                     main.keySelector();
@@ -197,7 +233,7 @@ public class SCALP {
                 main.USBBufferDirectoryFiles = main.USBBufferDirectory.list(scenariosOnly);
                 
                 if (main.hardwareAvailable) {
-                    main.hardwareSelector();
+                		main.hardwareSelector();
                 }
                 else {
                     main.keySelector();
@@ -213,6 +249,7 @@ public class SCALP {
                     + "the first argument (the mode) may or may not be correct, but the arguments following"
                     + "the mode are incorrect. Please check the documentation and the arguments and try again");
         }
+        
     }
     
     /**
@@ -225,6 +262,7 @@ public class SCALP {
      * the GPIO hardware buttons.
      */
     private  void keySelector() {
+    	
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 speakState();
@@ -267,6 +305,7 @@ public class SCALP {
      * that only after a full second will a secondary press be registered.
      */
     private void hardwareSelector() {
+    	
         speakState();
         buttonList[0].addListener(new GpioPinListenerDigital() {
             @Override
@@ -295,6 +334,19 @@ public class SCALP {
                 }
             }   
         });
+        
+//        //This holds the SCALP to wait for button input from hardware buttons
+//        //THIS IS A TEMPORARY FIX UNTIL REPO IS MERGED W/ SUNNY'S CODE
+//        //TODO: REMOVE AFTER REPO MERGE
+//        try {
+//        	while(true) 			
+//            	Thread.sleep(500);	
+//        }
+//        catch(InterruptedException e) {
+//        	e.printStackTrace();
+//        	System.out.println("Error while holding thread");
+//        }
+        
     }
     
     /**
@@ -436,6 +488,7 @@ public class SCALP {
             speakInstructions = false;
             speak("starting file " + currentDirectoryFiles[index]);
             System.out.println("starting file " + currentDirectoryFiles[index]);
+            this.logger.log(Level.INFO, "User started scenario: " + currentDirectoryFiles[index]);
             startPlayer(currentDirectory.getAbsolutePath() + File.separator + currentDirectoryFiles[index]);
         }
         else if (state.equals("settingsSelector")) {
@@ -509,8 +562,8 @@ public class SCALP {
             public void run() {
                 ScenarioParser s;
 				s = new ScenarioParser();
-				 voice.deallocate();
-				 s.setScenarioFile(path);
+				voice.deallocate();
+				s.setScenarioFile(path);
                
             }
         }).start();

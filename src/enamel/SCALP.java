@@ -129,26 +129,8 @@ public class SCALP {
         main.voice.setRate(150f);
         main.voice.allocate();
         
-        //File Handler for logging scenarios chosen
-        FileHandler fileHandler = null; 
-		try {
-			Path path = Paths.get(System.getProperty("user.dir") + File.separator + "logs");
-			if(!Files.exists(path)) Files.createDirectory(path);
-			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userScenarios.log.txt", fileSizeLimit, 1, true);
-		} catch (IOException e) {
-			e.printStackTrace();
-	         System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: IOException.");
-		}
-        fileHandler.setFormatter(new Formatter() {
-    		private String format = "[%1$s] [%2$s] %3$s %n";
-			private SimpleDateFormat dateWithMillis = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
-			@Override
-			public String format(LogRecord record) {
-				return String.format(format, dateWithMillis.format(new Date()), record.getSourceClassName(), formatMessage(record));
-			}
-    	});
-    	main.logger.addHandler(fileHandler);
-    	main.logger.setUseParentHandlers(false);
+        //File Handler for logging scenarios chosen by user
+        main.fileHanderInit();
         
         //Ensure the arguments are not empty. 
         if (args.length == 0) {
@@ -335,17 +317,6 @@ public class SCALP {
             }   
         });
         
-//        //This holds the SCALP to wait for button input from hardware buttons
-//        //THIS IS A TEMPORARY FIX UNTIL REPO IS MERGED W/ SUNNY'S CODE
-//        //TODO: REMOVE AFTER REPO MERGE
-//        try {
-//        	while(true) 			
-//            	Thread.sleep(500);	
-//        }
-//        catch(InterruptedException e) {
-//        	e.printStackTrace();
-//        	System.out.println("Error while holding thread");
-//        }
         
     }
     
@@ -592,4 +563,27 @@ public class SCALP {
      void speak(String message) {
        voice.speak(message);
     }
+     
+     private void fileHanderInit() {
+    	 
+    	 FileHandler fileHandler = null; 
+ 		try {
+ 			Path path = Paths.get(System.getProperty("user.dir") + File.separator + "logs");
+ 			if(!Files.exists(path)) Files.createDirectory(path);
+ 			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userScenarios.log.txt", fileSizeLimit, 1, true);
+ 		} catch (IOException e) {
+ 			e.printStackTrace();
+ 	         System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: IOException.");
+ 		}
+         fileHandler.setFormatter(new Formatter() {
+     		private String format = "[%1$s] [%2$s] %3$s %n";
+ 			private SimpleDateFormat dateWithMillis = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
+ 			@Override
+ 			public String format(LogRecord record) {
+ 				return String.format(format, dateWithMillis.format(new Date()), record.getSourceClassName(), formatMessage(record));
+ 			}
+     	});
+     	this.logger.addHandler(fileHandler);
+     	this.logger.setUseParentHandlers(false);
+     }
 }

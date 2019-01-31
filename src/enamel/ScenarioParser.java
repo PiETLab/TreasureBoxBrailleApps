@@ -38,6 +38,7 @@ public class ScenarioParser
     	//To find out what's being logged, search and find any "logger.log" calls.
     	FileHandler fileHandler = null;
 		try {
+            System.out.println(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "parser log.log");
 			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "parser log.log", 0, 1);
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
@@ -699,7 +700,7 @@ public class ScenarioParser
         {
             cellNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
             buttonNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
-			sim = new VisualPlayer (cellNum, buttonNum);				           
+			sim = new TactilePlayer (cellNum, buttonNum);				           
         }
         catch (Exception e)
         {

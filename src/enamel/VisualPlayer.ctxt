@@ -1,0 +1,29 @@
+#BlueJ class context
+comment0.params=brailleCellNumber\ buttonNumber
+comment0.target=VisualPlayer(int,\ int)
+comment0.text=\n\ Creates\ and\ displays\ a\ window\ with\ <code>brailleCellNumber</code>\ Braille\n\ cells\ and\ <code>jbuttonNumber</code>\ buttons.\ The\ two\ parameters\ must\ be\n\ positive\ integers.\n\ \n\ @param\ brailleCellNumber\n\ \ \ \ \ \ \ \ \ \ \ \ the\ number\ of\ braille\ cells\ the\ Simulator\ should\ have\n\ @param\ buttonNumber\n\ \ \ \ \ \ \ \ \ \ \ \ the\ number\ of\ buttons\ the\ Simulator\ should\ have\n\ @throws\ IOException\ \n\ @throws\ SecurityException\ \n\ @throws\ IllegalArgumentException\n\ \ \ \ \ \ \ \ \ \ \ \ \ if\ one\ or\ both\ of\ the\ two\ parameters\ is\ negative\ or\ 0\n
+comment1.params=
+comment1.target=void\ run()
+comment2.params=windowEvent
+comment2.target=void\ windowClosing(java.awt.event.WindowEvent)
+comment3.params=index
+comment3.target=javax.swing.JButton\ getButton(int)
+comment3.text=\n\ Returns\ a\ reference\ to\ the\ button\ at\ the\ index\ passed\ as\ argument.\ The\n\ main\ purpose\ of\ providing\ this\ method\ is\ so\ the\ client\ can\ add\n\ actionListeners\ to\ the\ button.\ Buttons\ are\ numbered\ from\ left\ to\ right\ as\n\ they\ appear\ in\ the\ frame,\ from\ 0\ to\ (bbuttonNumber-1),\ bbuttonNumber\n\ being\ the\ number\ of\ buttons\ initialized\ by\ the\ constructor.\n\ \n\ @param\ index\n\ \ \ \ \ \ \ \ \ \ \ \ the\ index\ of\ the\ button\ to\ be\ returned\n\ @return\ reference\ to\ the\ JButton\ object\ at\ the\ index\ passed\ as\ argument\n\ @throws\ IllegalArgumentException\n\ \ \ \ \ \ \ \ \ \ \ \ \ if\ the\ index\ is\ negative\ or\ equal\ to\ or\ bigger\ than\n\ \ \ \ \ \ \ \ \ \ \ \ \ buttonNumber\ (the\ number\ of\ buttons\ initialized)\n
+comment4.params=
+comment4.target=void\ refresh()
+comment4.text=\n\ Refreshes\ the\ display\ to\ match\ the\ current\ state\ of\ the\ \n\ instantiated\ BrailleCell\ object.\ For\ the\ VisualPlayer\ class,\n\ this\ method\ loops\ through\ the\ jRadioButton\ array\ and\ sets\n\ the\ corresponding\ jRadioButton\ pins\ to\ <code>setSelected(true)</code>\n\ or\ <code>setSelected(false)</code>,\ matching\ it\ with\ the\ \n\ brailleList's\ BrailleCell\ object's\ current\ state\ of\ boolean\ pins.\n
+comment5.params=index\ param\ sp
+comment5.target=void\ addSkipButtonListener(int,\ java.lang.String,\ ScenarioParser)
+comment5.text=\n\ Adds\ an\ ActionListener\ to\ the\ JButton\ at\ the\ specified\ index\ of\ buttonList.\n\ The\ index\ must\ be\ between\ 0\ and\ buttonNumber.\n\ <p>\n\ The\ actionPerformed\ method\ requires\ a\ reference\ to\ the\ ScenarioParser,\n\ needed\ for\ it\ to\ call\ ScenarioParser.skip()\ method\ as\ well\ as\ have\n\ access\ to\ the\ userInput\ field.\ Pressing\ this\ key\ will\ skip\ to\ the\n\ specified\ area\ in\ the\ scenario\ file.\n\ \n\ @param\ index\n\ \ \ \ \ \ \ \ \ \ \ \ the\ index\ of\ the\ KeyListener\ to\ be\ added.\n\ @param\ param\n\ \t\t\tthe\ String\ in\ ScenarioParser\ to\ skip\ to,\ needed\ for\ ScenarioParser's\ <code>skip(String\ indicator)</code>\n\ \t\t\tmethod\n\ @param\ sp\n\ \t\t\tthe\ reference\ to\ the\ current\ ScenarioParser\ object\ \ \ \ \ \ \ \ \ \ \n
+comment6.params=arg0
+comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment7.params=index\ sp
+comment7.target=void\ addRepeatButtonListener(int,\ ScenarioParser)
+comment7.text=\n\ Adds\ an\ ActionListener\ to\ the\ JButton\ at\ the\ specified\ index\ of\ buttonList.\n\ The\ index\ must\ be\ between\ 0\ and\ buttonNumber.\n\ The\ ActionListener\ requires\ a\ reference\ of\ the\ ScenarioParser,\n\ needed\ for\ it\ to\ call\ <code>ScenarioParser.repeatText()</code>\ method\ as\ well\ as\ have\n\ access\ to\ the\ userInput\ field.\ Pressing\ this\ key\ will\ repeat\ the\n\ speech\ of\ the\ text\ specified\ in\ the\ scenario\ file.\n\ \n\ @param\ index\n\ \t\t\tthe\ index\ of\ the\ button\ to\ add\ the\ KeyListener\ to\n\ @param\ sp\n\ \t\t\tthe\ reference\ to\ the\ current\ ScenarioParser\ object\n
+comment8.params=arg0
+comment8.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment9.params=index
+comment9.target=void\ removeButtonListener(int)
+comment9.text=\n\ Removes\ the\ ActionListener\ from\ the\ button\ at\ specified\ index\ of\ buttonList\ passed\ as\ argument.\ \n\ The\ index\ must\ be\ between\ 0\ and\ buttonNumber.\n\ \n\ @param\ index\n\ \ \ \ \ \ \ \ \ \ \ \ the\ index\ of\ the\ KeyListener\ to\ be\ removed.\n\ @throws\ IllegalArgumentException\n\ \ \ \ \ \ \ \ \ \ \ \ \ if\ the\ index\ is\ negative\ or\ equal\ to\ or\ bigger\ than\n\ \ \ \ \ \ \ \ \ \ \ \ \ buttonNumber\ (the\ number\ of\ buttons\ initialized)\n
+numComments=10
+

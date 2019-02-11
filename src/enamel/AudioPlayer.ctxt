@@ -1,0 +1,33 @@
+#BlueJ class context
+comment0.params=brailleCellNumber\ buttonNumber
+comment0.target=AudioPlayer(int,\ int)
+comment0.text=\n\ Creates\ and\ displays\ a\ blank\ window,\ which\ later\ will\ be\ populated\ with\n\ KeyListeners.\ The\ two\ parameters\ <code>brailleCellNumber</code>\ and\ <code>buttonNumber</code>\n\ are\ used\ for\ auditory\ feedback\ and\ keyboard,\ and\ are\ not\ displayed\ graphically.\n\ For\ the\ AudioPlayer\ class,\ it\ is\ assumed\ the\ number\ of\ <code>buttonNumber</code>\ is\ \n\ not\ greater\ than\ 10,\ as\ that\ is\ the\ available\ number\ of\ keys\ on\ a\ standard\ keyboard's\ number\ row.\ \n\ The\ two\ parameters\ must\ be\ positive\ integers.\n\ \n\ @param\ brailleCellNumber\n\ \ \ \ \ \ \ \ \ \ \ \ the\ number\ of\ braille\ cells\ the\ AudioPlayer\ should\ have\n\ @param\ buttonNumber\n\ \ \ \ \ \ \ \ \ \ \ \ the\ number\ of\ buttons\ the\ AudioPlayer\ should\ have\n\ @throws\ IOException\ \n\ @throws\ SecurityException\ \n\ @throws\ IllegalArgumentException\n\ \ \ \ \ \ \ \ \ \ \ \ \ if\ one\ or\ both\ of\ the\ two\ parameters\ is\ negative\ or\ 0\n
+comment1.params=
+comment1.target=void\ refresh()
+comment1.text=\n\ Refreshes\ the\ "display"\ (audio)\ to\ match\ the\ current\ state\ of\ the\ \n\ instantiated\ BrailleCell\ object.\ For\ the\ AudioPlayer\ class,\n\ this\ method\ forms\ a\ String\ that\ describes\ the\ current\ state\ of\ the\ Braille\ Cell\ object,\n\ listing\ which\ of\ the\ 8\ pins\ are\ currently\ up.\ If\ no\ pins\ are\ up,\ it\ will\ simply\n\ state\ that\ no\ pins\ are\ up.\ The\ String\ is\ then\ spoken\ out\ loud\ to\ the\ user\ via\n\ Voice.speak().\n
+comment10.params=index
+comment10.target=java.awt.event.KeyListener\ getButton(int)
+comment10.text=\n\ Returns\ a\ reference\ to\ the\ key\ at\ the\ index\ passed\ as\ argument.\ The\n\ main\ purpose\ of\ providing\ this\ method\ is\ so\ the\ client\ can\ add\n\ KeyListeners\ to\ the\ frame.\ Buttons\ are\ numbered\ from\ left\ to\ right\ as\n\ matching\ the\ physical\ keyboard's\ "1"\ to\ "0"\ keys\ on\ the\ number\ row,\ \n\ from\ 0\ to\ (buttonNumber-1),\ buttonNumber\n\ being\ the\ number\ of\ buttons\ initialized\ by\ the\ constructor\ (again,\ buttonNumber\n\ is\ assumed\ to\ be\ smaller\ or\ equal\ to\ 10).\n\ \n\ @param\ index\n\ \ \ \ \ \ \ \ \ \ \ \ the\ index\ of\ the\ button\ to\ be\ returned\n\ @return\ reference\ to\ the\ KeyListener\ at\ the\ index\ passed\ as\ argument\n\ @throws\ IllegalArgumentException\n\ \ \ \ \ \ \ \ \ \ \ \ \ if\ the\ index\ is\ negative\ or\ equal\ to\ or\ bigger\ than\n\ \ \ \ \ \ \ \ \ \ \ \ \ buttonNumber\ (the\ number\ of\ buttons\ initialized)\n
+comment11.params=index
+comment11.target=void\ removeButtonListener(int)
+comment11.text=\n\ Removes\ the\ KeyListener\ at\ the\ specified\ index\ passed\ as\ argument.\ \n\ The\ index\ must\ be\ between\ 0\ and\ buttonNumber.\n\ \n\ @param\ index\n\ \ \ \ \ \ \ \ \ \ \ \ the\ index\ of\ the\ KeyListener\ to\ be\ removed.\n\ @throws\ IllegalArgumentException\n\ \ \ \ \ \ \ \ \ \ \ \ \ if\ the\ index\ is\ negative\ or\ equal\ to\ or\ bigger\ than\n\ \ \ \ \ \ \ \ \ \ \ \ \ buttonNumber\ (the\ number\ of\ buttons\ initialized)\n
+comment2.params=index\ param\ sp
+comment2.target=void\ addSkipButtonListener(int,\ java.lang.String,\ ScenarioParser)
+comment2.text=\n\ Adds\ a\ KeyListener\ to\ both\ keyListenerList\ at\ the\ specified\ index\ \n\ (for\ reference\ purposes)\ and\ to\ the\ JFrame\ (for\ \ the\ key\ listening\ function).\ \n\ This\ index\ will\ be\ used\ to\ specify\ \n\ which\ keyboard\ KeyCode\ will\ need\ to\ be\ pressed\ to\ trigger\ the\ event.\n\ The\ index\ must\ be\ between\ 0\ and\ buttonNumber.\ Since\ it's\ assumed\ that\n\ only\ the\ number\ row\ keys\ will\ be\ used,\ the\ index\ must\ also\ be\ between\n\ 0\ and\ 9.\n\ <p>\n\ The\ KeyCode\ for\ the\ keyboard\ key\ "1"\ is\ defined\ as\ the\ parameter\ <code>ONE</code>.\n\ Since\ the\ rest\ of\ the\ number\ row\ keys\ are\ sequential\ in\ their\ KeyCode,\n\ adding\ the\ KeyCode\ <code>ONE</code>\ by\ the\ index\ gives\ the\ correct\ key\ that\ matches\ the\ index.\n\ <p>\n\ The\ keyPressed\ method\ requires\ a\ parameter\ from\ the\ ScenarioParser\ class,\n\ needed\ for\ it\ to\ call\ ScenarioParser.skip()\ method\ as\ well\ as\ have\n\ access\ to\ the\ userInput\ field.\ Pressing\ this\ key\ will\ skip\ to\ the\n\ specified\ area\ in\ the\ scenario\ file.\ \n\ \n\ @param\ index\n\ \ \ \ \ \ \ \ \ \ \ \ the\ index\ of\ the\ KeyListener\ to\ be\ added.\n\ @param\ param\n\ \t\t\tthe\ String\ in\ ScenarioParser\ to\ skip\ to,\ needed\ for\ ScenarioParser's\ <code>skip(String\ indicator)</code>\n\ \t\t\tmethod\n\ @param\ sp\n\ \t\t\tthe\ reference\ to\ the\ current\ ScenarioParser\ object\ \ \ \ \ \ \ \ \ \ \n
+comment3.params=e
+comment3.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment4.params=e
+comment4.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment5.params=e
+comment5.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment6.params=index\ sp
+comment6.target=void\ addRepeatButtonListener(int,\ ScenarioParser)
+comment6.text=\n\ Adds\ a\ KeyListener\ with\ the\ specified\ index\ passed\ as\ argument\ to\n\ both\ keyListenerList\ (for\ reference\ purposes)\ and\ to\ the\ JFrame\ for\ \n\ the\ function.\ This\ index\ will\ be\ used\ to\ specify\ which\ keyboard\ KeyCode\n\ will\ need\ to\ be\ pressed\ to\ trigger\ the\ event.\n\ The\ index\ must\ be\ between\ 0\ and\ buttonNumber.\ Since\ it's\ assumed\ that\n\ only\ the\ number\ row\ keys\ will\ be\ used,\ the\ index\ must\ also\ be\ between\n\ 0\ and\ 9.\n\ <p>\n\ The\ KeyCode\ for\ the\ keyboard\ key\ "1"\ is\ defined\ as\ the\ parameter\ <code>ONE</code>.\n\ Since\ the\ rest\ of\ the\ number\ row\ keys\ are\ sequential\ in\ their\ KeyCode,\n\ adding\ the\ KeyCode\ <code>ONE</code>\ by\ the\ index\ gives\ the\ correct\ key\ that\ matches\ the\ index.\n\ <p>\n\ The\ KeyListener\ requires\ a\ parameter\ from\ the\ ScenarioParser\ class,\n\ needed\ for\ it\ to\ call\ <code>ScenarioParser.repeatText()</code>\ method\ as\ well\ as\ have\n\ access\ to\ the\ userInput\ field.\ Pressing\ this\ key\ will\ repeat\ the\n\ speech\ of\ the\ text\ specified\ in\ the\ scenario\ file.\n\ \n\ @param\ index\n\ \t\t\tthe\ index\ of\ the\ button\ to\ add\ the\ KeyListener\ to\n\ @param\ sp\n\ \t\t\tthe\ reference\ to\ the\ current\ ScenarioParser\ object\n
+comment7.params=e
+comment7.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment8.params=e
+comment8.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment9.params=e
+comment9.target=void\ keyTyped(java.awt.event.KeyEvent)
+numComments=12
+

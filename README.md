@@ -89,6 +89,28 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
     * ![running_simulator](./READMEImages/running_simulator.png)
 
 
+## Raspberry Pi debugging
+
+* In order to debug the `SCALP` app using a Raspberry Pi follow the steps:
+
+1. Navigate the `/home/pi`: `cd /home/pi`
+2. Clone the repository: `git clone https://github.com/PiETLab/TreasureBoxBrailleApps`
+3. Close the terminal and open the BlueJ Java IDE
+  * ![bluej-icon](./READMEImages/bluej-icon.png)
+4. Click on `Project` -> `Open Project` and select the `src` file.
+  * ![bluej-src](./READMEImages/bluej-src.png)
+5. Check if all the dependencies were imported correctly
+  * Navigate to the top menu and click on `Tools` -> `Preferences` 
+  * Go to the `Libraries` tab, and you should see all libraries with status `Loaded`
+    * ![bluej-loaded](./READMEImages/bluej-loaded.png) 
+      * In case the status is not `Loaded`, re-import the libraries by clicking on the `Add` button and navigating to the `lib` folder. Add lib by lib to the project manually.
+6. Double click the `Enamel` package in the center of the window.
+  * ![bluej-open-project](./READMEImages/bluej-open-project.png) 
+7. Finally, right click both `SCALP` and `ToyAuthoring` classes one at a time and select `Compile`
+  * ![bluej-compile](./READMEImages/bluej-compile.png)
+8. After compiling both classes, right click again on `ToyAuthoring` and select `void main(String[] args)`
+  * This command will run the `ToyAuthoring` main class with an example scenario.  
+
 ## API Documentation
 
 * For further API documentation about every single package and class, visit the `doc` folder and open the `index.html` file.
@@ -96,3 +118,8 @@ This repository is dedicated to both **Authoring App** and **SCALP App**.
 
 * To generate a more recent API documentation click on `Project -> Generate Javadoc`
   * ![generate_docs](./READMEImages/generate_docs.png)
+
+
+## How to contribute
+
+* Click [here](https://github.com/PiETLab/TreasureBoxBrailleApps/tree/develop/pullRequestTutorial) for complete instructions

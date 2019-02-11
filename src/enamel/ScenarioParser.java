@@ -3,13 +3,13 @@ import java.io.*;
 import java.util.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.text.SimpleDateFormat;
 
 import java.util.logging.*;
-import java.util.logging.Formatter;
 
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+
+import common.TBBLogger;
 
 public class ScenarioParser
 {
@@ -24,41 +24,12 @@ public class ScenarioParser
     public boolean userInput;
     private String scenarioFilePath;
     private int score = 0;
-    Logger logger = Logger.getLogger(ScenarioParser.class.getName());
+    
+    //To find out what's being logged, search and find any "logger.log" calls.
+    TBBLogger logger = new TBBLogger(ScenarioParser.class.getName(), "parser log.log"); 
     
     public ScenarioParser()
-    {
-    	//Code for the logger. We decided to maintain the logging format through code instead of changing the System Property
-    	//and using the default ParentHandler, so that we can rely on consistency without changing settings for each system. 
-    	//Currently, it's set to ConsoleHandler instead of FileHandler. It will write the log
-		//to the console. 
-		//Eventually, we'll need to have it save to a file. Simply change ConsoleHandler to FileHandler,
-		//and set the output to the appropriate directory. 
-    	
-    	//To find out what's being logged, search and find any "logger.log" calls.
-    	FileHandler fileHandler = null;
-		try {
-			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "parser log.log", 0, 1);
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: SecurityException.");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-	         System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: SecurityException.");
-		}
-    	
-        fileHandler.setFormatter(new Formatter() {
-    		private String format = "[%1$s] [%2$s] %3$s %n";
-			private SimpleDateFormat dateWithMillis = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
-			@Override
-			public String format(LogRecord record) {
-				return String.format(format, dateWithMillis.format(new Date()), record.getSourceClassName(), formatMessage(record));
-			}
-    	});
-    	logger.addHandler(fileHandler);
-    	logger.setUseParentHandlers(false);
+    {	
     	
         //The next two lines allow the use of the mbrola voices.
         String currDir = System.getProperty("user.dir");
@@ -599,39 +570,15 @@ public class ScenarioParser
      * This method logs any logical errors or exception errors that may occur at any time during the program.
      */
     private void errorLog (String exception, String message)
-    {
-        Logger logger = Logger.getLogger("ERROR_LOG");  
-        FileHandler fh;  
-        
+    {        
         System.out.println(message);
         
 //        speak ("Error! Something went wrong in the program! Please consult a teacher " +
 //                "or administrator for assistance! Also please view the ERROR_LOG file for more details");
-        //The try-catch block is to format the Logger class so that the error log file is easier to understand.
-        try 
-        {  
-            File f = new File("ERROR_LOG.txt");
-            fh = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + f.toString(), 0, 1);  
-           
-
-            logger.addHandler(fh);
-            logger.setUseParentHandlers(false);
-            SimpleFormatter formatter = new SimpleFormatter();  
-            fh.setFormatter(formatter);  
             
-            logger.warning(exception);  
-            logger.info(message);
-            fh.close ();
+        TBBLogger.errLogger.warning(exception);  
+        TBBLogger.errLogger.info(message);
 
-        } 
-        catch (SecurityException e) 
-        {  
-            e.printStackTrace();  
-        } 
-        catch (IOException e) 
-        {  
-            e.printStackTrace();  
-        }  
         exit ();
     }
     

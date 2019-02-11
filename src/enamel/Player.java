@@ -1,14 +1,9 @@
 package enamel;
 
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
+
+import common.TBBLogger;
 
 /**
 * This class provides abstract and concrete methods for simulating a braille cell.
@@ -26,7 +21,12 @@ public abstract class Player {
 	int brailleCellNumber;
 	int buttonNumber;
 	LinkedList<BrailleCell> brailleList = new LinkedList<BrailleCell>();
-	Logger logger = Logger.getLogger(this.getClass().getName());
+	
+	/**
+	 * Logger used by all child classes of Player
+	 * To find out what's being logged, search and find any "logger.log" calls.
+	 */
+	TBBLogger logger = new TBBLogger(this.getClass().getName(), "logs.log");
 	int repeat = 0;
 	
 	/**
@@ -45,33 +45,7 @@ public abstract class Player {
      * @throws IllegalArgumentException
      *             if one or both of the two parameters is negative or 0
      */
-	public Player(int brailleCellNumber, int buttonNumber) {
-
-	    //Formatting the Logger for the player class, which all its child classes uses. 
-		//Change the formatting as needed. 
-		//Currently, it's set to ConsoleHandler instead of FileHandler. It will write the log
-		//to the console. 
-		//Eventually, we'll need to have it save to a file. Simply change ConsoleHandler to FileHandler,
-		//and set the output to the appropriate directory. 
-		
-		//To find out what's being logged, search and find any "logger.log" calls.
-		FileHandler fileHandler = null;
-		try {
-			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "logs.log", 0, 1);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        fileHandler.setFormatter(new Formatter() {
-    		private String format = "[%1$s] [%2$s] %3$s %n";
-			private SimpleDateFormat dateWithMillis = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
-			@Override
-			public String format(LogRecord record) {
-				return String.format(format, dateWithMillis.format(new Date()), record.getSourceClassName(), formatMessage(record));
-			}
-    	});
-    	logger.addHandler(fileHandler);
-    	logger.setUseParentHandlers(false);
+	public Player(int brailleCellNumber, int buttonNumber) {		
 	    
 		if (brailleCellNumber <= 0 || buttonNumber <= 0)
 			throw new IllegalArgumentException("Non-positive integer entered.");

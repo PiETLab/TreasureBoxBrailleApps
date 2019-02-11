@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -20,6 +21,8 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+
+import common.TBBLogger;
 /**
  * This class allows the user to select a scenario file to be used for
  * ScenarioParser to parse and play the text and commands. This class
@@ -106,6 +109,8 @@ public class SCALP {
     //Hardware button list.
     GpioPinDigitalInput[] buttonList;
     GpioController gpio;
+    
+    public TBBLogger logger = new TBBLogger(this.getClass().getName(),"userScenarios.log.txt");
     
     public static void main(String[] args) {
 
@@ -435,6 +440,8 @@ public class SCALP {
         else if (state.equals("fileSelector")) {
             speakInstructions = false;
             speak("starting file " + currentDirectoryFiles[index]);
+            this.logger.log(Level.INFO,  "User started scenario: " 
+            + currentDirectoryFiles[index]);
             System.out.println("starting file " + currentDirectoryFiles[index]);
             startPlayer(currentDirectory.getAbsolutePath() + File.separator + currentDirectoryFiles[index]);
         }

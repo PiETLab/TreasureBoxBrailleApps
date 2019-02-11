@@ -14,18 +14,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 import javax.swing.AbstractAction;
 import java.awt.KeyboardFocusManager;
@@ -33,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.KeyEventDispatcher;
 import javax.swing.SwingUtilities;
 
+import common.TBBLogger;
 import listeners.NewButtonListener;
 
 
@@ -56,9 +48,10 @@ public class GUI extends JFrame {
 	private HashMap<KeyStroke, Action> actionMap = new HashMap<KeyStroke, Action>();
 	private HashMap<KeyStroke, String> newItemMap = new HashMap<KeyStroke, String>();
 	public  HashMap<String, Integer> counterMap = new HashMap<String, Integer>();
-	public Logger logger = Logger.getLogger(this.getClass().getName());
+	public TBBLogger logger = new TBBLogger(this.getClass().getName(),"userActions.log.txt");
 	
 	public File loadedFile = null;
+	
 	
 	//This file keeps track of how many times each function was used, the counter persists through different instances of the JVM.
 	public File functionCounter = new File(
@@ -78,31 +71,6 @@ public class GUI extends JFrame {
 				"Welcome to the Treasure Box Braille Authoring App. To scroll through the options, use the tab key. Press the space bar to select an option.");
 
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-		
-		//User Actions log created
-		FileHandler fileHandler = null;
-		try {
-			Path path = Paths.get(System.getProperty("user.dir") + File.separator + "logs");
-			if(!Files.exists(path)) Files.createDirectory(path);
-			fileHandler = new FileHandler(System.getProperty("user.dir") + File.separator + "logs" + File.separator + "userActions.log.txt", 0, 1);
-//		} catch (SecurityException e) {
-//			e.printStackTrace();
-//			System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: SecurityException.");
-		} catch (IOException e) {
-			e.printStackTrace();
-	         System.err.println("An error has occurred while creating the log files, please contact an administrator." + System.getProperty("line.separator") + "Error type: IOException.");
-		}
-    	
-        fileHandler.setFormatter(new Formatter() {
-    		private String format = "[%1$s] [%2$s] %3$s %n";
-			private SimpleDateFormat dateWithMillis = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
-			@Override
-			public String format(LogRecord record) {
-				return String.format(format, dateWithMillis.format(new Date()), record.getSourceClassName(), formatMessage(record));
-			}
-    	});
-    	logger.addHandler(fileHandler);
-    	logger.setUseParentHandlers(false);
 		
 		// Create the colour mapper
 		ColourMapper mapper = new ColourMapper();

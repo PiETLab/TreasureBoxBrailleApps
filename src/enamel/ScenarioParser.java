@@ -700,7 +700,29 @@ public class ScenarioParser
         {
             cellNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
             buttonNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
-			sim = new TactilePlayer (cellNum, buttonNum);				           
+			sim = new TactilePlayer (cellNum, buttonNum);
+        }
+        catch (Exception e)
+        {
+            
+            errorLog ("Exception error: " + e.toString (), "Expected format: Cell num1 \n Button num2 \n " +
+            "as the first two lines of the scenarion file, and where num1 and num2 are positive integers. \n"
+            + "Did not receive such a format in the scenario file and program had to end due to the incorrect"
+            + "file format.");
+        }
+    }
+    
+    /*
+     * This method initializes the simulator class, by interpreting the first two lines of the scenario file
+     * to indicate the number of cells and number of JButtons, respectively.
+     */
+    private void setCellAndButtonVisual () 
+    {
+        try
+        {
+            cellNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
+            buttonNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
+			sim = new VisualPlayer (cellNum, buttonNum);
         }
         catch (Exception e)
         {
@@ -737,4 +759,33 @@ public class ScenarioParser
         }
     }
     
+
+    /*
+     * This method plays the scenario file specified by the argument. 
+     * The argument can be specified either as an absolute or a relative path.
+     */
+    public void setScenarioFile (String scenarioFile, boolean playType) 
+    {
+    	try
+    	{
+
+    		File f = new File (scenarioFile);
+    		fileScanner = new Scanner (f);
+    		String absolutePath = f.getAbsolutePath();
+    		scenarioFilePath = absolutePath.substring(0,absolutePath.lastIndexOf(File.separator));
+    		if(playType) 
+    			setCellAndButtonVisual();
+    		else
+    			setCellAndButton();
+    		play();
+    	}
+    	catch (Exception e)
+    	{
+    		errorLog ("Exception error: " + e.toString(), "Expected the directory path of the scenario file to"
+    				+ " a file exists in the project folder. \n Could not find directory to path: " + scenarioFile 
+    				+ " \n Perhaps" + " you forgot to add the file to the directory or "
+    				+ " you are looking for a different directory?");
+    	}
+    }
+
 }

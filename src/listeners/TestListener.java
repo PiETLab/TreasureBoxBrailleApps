@@ -103,8 +103,8 @@ public class TestListener implements ActionListener {
 
 		 playerThread = new Thread("Player Thread") {
 		    public void run(){    
-		        ScenarioParser s = new ScenarioParser();        
-				s.setScenarioFile(scenarioFile.getAbsolutePath());
+		        ScenarioParser s = new ScenarioParser();
+				s.setScenarioFile(scenarioFile.getAbsolutePath(), true);
 		    }
 		};
 		playerThread.start();

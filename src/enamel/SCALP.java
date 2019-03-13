@@ -510,7 +510,8 @@ public class SCALP {
                 ScenarioParser s;
 				s = new ScenarioParser();
 				 voice.deallocate();
-				 s.setScenarioFile(path);
+				 System.out.println();
+				 s.setScenarioFile(path, !hardwareAvailable);
                
             }
         }).start();

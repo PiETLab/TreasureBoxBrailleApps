@@ -500,20 +500,44 @@ public class SCALP {
     void startPlayer(String path){
         if (hardwareAvailable) {
             removeHWButtons();
+            new Thread(new Runnable() {
+                public void run() {
+                    ScenarioParser s;
+    				s = new ScenarioParser();
+    				 voice.deallocate();
+    				 System.out.println();
+    				 s.setScenarioFile(path, !hardwareAvailable);
+                   
+                }
+            }).start();
         }
         else {
             frame.setVisible(false);
             frame.dispose();
+            new Thread(new Runnable() {
+                public void run() {
+                    ScenarioParser s;
+    				s = new ScenarioParser();
+    				 voice.deallocate();
+    				 System.out.println();
+    				 s.setScenarioFile(path, !hardwareAvailable);
+                   
+                }
+            }).start();
+            //TODO: Create separate thread that starts in each if branch, one that calls
+            // the regular scenacrio parser, and one that calls the visual player one.
+            // This will ensure both scalp and the authoring app can use the visual or tactile
         }
-        new Thread(new Runnable() {
+/*        new Thread(new Runnable() {
             public void run() {
                 ScenarioParser s;
 				s = new ScenarioParser();
 				 voice.deallocate();
+				 System.out.println();
 				 s.setScenarioFile(path);
                
             }
-        }).start();
+        }).start();*/
     }
     
     /**

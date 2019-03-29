@@ -24,6 +24,7 @@ public class ScenarioParser
     public boolean userInput;
     private String scenarioFilePath;
     private int score = 0;
+    private int offset = 0;
     Logger logger = Logger.getLogger(ScenarioParser.class.getName());
     
     public ScenarioParser()
@@ -224,10 +225,19 @@ public class ScenarioParser
             {
                 incrementScore();
             }
+        	//The key phrase to increment offset for total score
+            else if (fileLine.length () >= 8 && fileLine.substring(0, 8).equals("/~offset"))
+            {
+            	incrementOffset();
+            }
         	//The key phrase to speak the current score. 
             else if (fileLine.length () >= 11 && fileLine.substring(0, 11).equals("/~say-score"))
             {
                 speak(((Integer)this.score).toString());
+            }
+            else if(fileLine.length () >= 11 && fileLine.substring(0, 11).equals("/~say-total"))
+            {
+            	speak(((Integer)(this.score + this.offset)).toString());
             }
         	//The key phrase to log an incorrect answer.
             else if (fileLine.length() >= 11 && fileLine.substring(0, 11).equals("/~incorrect"))
@@ -387,6 +397,14 @@ public class ScenarioParser
     private void incrementScore() {
         this.score++;
         logger.log(Level.INFO, "REPORT: User's current score is {0}", ((Integer)this.score).toString());
+    }
+    
+    /**
+     * This method corresponds to /~offset. This helps to calculate what the users score is out of.
+     * Offset + Score = Total
+     */
+    private void incrementOffset() {
+    	this.offset ++;
     }
     
     /*
@@ -700,7 +718,10 @@ public class ScenarioParser
         {
             cellNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
             buttonNum = Integer.parseInt(fileScanner.nextLine().split("\\s")[1]);
-			sim = new TactilePlayer (cellNum, buttonNum);				           
+            sim = new VisualPlayer (cellNum, buttonNum);
+			//sim = new TactilePlayer (cellNum, buttonNum);				           
+			//TODO: Replace tactilePlayer when you are done
+            // OR JUST DON'T COMMIT THIS CLASS FILE
         }
         catch (Exception e)
         {

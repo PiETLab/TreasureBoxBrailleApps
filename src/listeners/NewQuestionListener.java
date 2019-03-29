@@ -17,6 +17,7 @@ import authoring.QuestionWindow;
 import commands.GoHereCommand;
 import commands.PauseCommand;
 import commands.PlayerCommand;
+import commands.PointCommand;
 import commands.ResetButtonCommand;
 import commands.SetStringCommand;
 import commands.SkipButtonCommand;
@@ -133,6 +134,8 @@ public class NewQuestionListener extends JPanel implements ActionListener, Acces
 				qc.addCommand(new UserInputCommand());
 				// Labels for bad
 				qc.addCommand(new GoHereCommand("" + randomLabel + "-bad"));
+				// Adds offset to count total score
+				qc.addCommand(new PointCommand("offset"));
 				if (ques.getRepeatField().getText().length() > 0 && ques.getIntroField().getText() != "none")
 					qc.addCommand(new TTSCommand(ques.getRepeatField().getText()));
 				else if (ques.getIncorrectAudio() != "none")
@@ -144,6 +147,8 @@ public class NewQuestionListener extends JPanel implements ActionListener, Acces
 				// qc.addCommand(new SkipCommand(randomLabel + "-start"));
 				// Label for good
 				holder = new GoHereCommand("" + randomLabel + "-good");
+				qc.addCommand(holder);
+				holder = new PointCommand();
 				qc.addCommand(holder);
 
 				if (ques.getCorrectField().getText().length() > 0)

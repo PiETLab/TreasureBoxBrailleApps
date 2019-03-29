@@ -137,7 +137,7 @@ public class InsertBefore {
 	panel.add(btnDisplayOnBraille);
 
 	
-	String[] array= {"Advance Options","Repeat", "Button Repeat", "Button Location", "User Input", "Reset Buttons", "Go To Location", "Clear All", "Clear Cell",
+	String[] array= {"Advance Options", "Say Score", "Say Total","Repeat", "Button Repeat", "Button Location", "User Input", "Reset Buttons", "Go To Location", "Clear All", "Clear Cell",
 			"Set Pins", "Set Character", "Raise Pin", "Lower Pin", "Set Voice", "Location Tag"};
 	
 

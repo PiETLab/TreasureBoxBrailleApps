@@ -31,6 +31,7 @@ import commands.PauseCommand;
 import commands.RepeatButtonCommand;
 import commands.RepeatCommand;
 import commands.ResetButtonCommand;
+import commands.SayScoreCommand;
 import commands.SetPinsCommand;
 import commands.SetStringCommand;
 import commands.SetVoiceCommand;
@@ -140,7 +141,7 @@ public class NewButtonListener implements ActionListener {
 		btnDisplayOnBraille.setFont(new Font(FONT_FACE, Font.PLAIN, FONT_SIZE));
 		panel.add(btnDisplayOnBraille);
 
-		String[] array = { "Advance Options", "Repeat", "Button Repeat", "Button Location", "User Input",
+		String[] array = { "Advance Options", "Say Score", "Say Total", "Repeat", "Button Repeat", "Button Location", "User Input",
 				"Reset Buttons", "Go To Location", "Clear All", "Clear Cell", "Set Pins", "Set Character", "Raise Pin",
 				"Lower Pin", "Set Voice", "Location Tag" };
 
@@ -199,6 +200,29 @@ public class NewButtonListener implements ActionListener {
 					else
 						gui.getLeftPanel().addItemAt(new SetStringCommand((String) value));
 					gui.counterMap.put("Display on Braille Cell", gui.counterMap.get("Display on Braille Cell") + 1);
+				}
+				break;
+				
+			case "Say Score":
+				value = JOptionPane.showOptionDialog(gui, "Say Score?", "Edit Item Details", 
+						JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+				value = ((Integer)(value) == 0) ? true : null;
+				if(value != null) { 
+					if(ID == "add")
+						gui.getLeftPanel().addItem(new SayScoreCommand((boolean)value));
+					else
+						gui.getLeftPanel().addItemAt(new SayScoreCommand((boolean)value));
+				}
+				break;
+			case "Say Total":
+				value = JOptionPane.showOptionDialog(gui, "Say Total?", "Edit Item Details", 
+						JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+				value = ((Integer)(value) == 0) ? false : null;
+				if(value != null) { 
+					if(ID == "add")
+						gui.getLeftPanel().addItem(new SayScoreCommand((boolean)value));
+					else
+						gui.getLeftPanel().addItemAt(new SayScoreCommand((boolean)value));
 				}
 				break;
 			case "Repeat":
